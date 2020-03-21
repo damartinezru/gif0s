@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
+@import "./constants.scss";
+@import "./clases-comunes.scss";
+
+* {
+  margin: 0%;
+  padding: 0%;
+}
+.font {
+  color: $primary-color;
+  @extend %font-prefix;
+  @extend %first-font-measure;
+  text-align: center;
+}
+
+.button-one {
+  @extend %button-prefix;
+}
+.button-active {
+  @extend %active-focus-button-style;
+}
+.letter-underline {
+  text-decoration: underline;
+}
+.input-box-gifs {
+  @extend %input-box-gifs-style;
+}
+.general-margin {
+  margin-right: 7.5%;
+  margin-left: 7.5%;
+}
+
+header {
+  h6 {
+    @extend %header-prefix;
+  }
+  div {
+    margin-bottom: 1%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .initial-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 40%;
+      .create-gif-button {
+        width: 35%;
+        button {
+          width: 100%;
+          padding-top: 5%;
+          padding-bottom: 5%;
+          &:focus {
+            @extend %active-focus-button-style;
+          }
+        }
+      }
+      .dropdown {
+        width: 35%;
+        display: flex;
+        flex-flow: column wrap;
+        position: relative;
+
+        .dropdown-buttons {
+          width: 100%;
+          margin: 0%;
+          z-index: 2;
+          .button-theme {
+            width: 80%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+          .button-dropdown {
+            width: 20%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          z-index: 1;
+          padding-top: 2.5em;
+          padding-bottom: 1em;
+          width: 99%;
+          flex-flow: column nowrap;
+          background: $secondary-color;
+          box-shadow: $fourth-boxshadow-prefix;
+          @extend %common-font-color;
+          a {
+            width: 80%;
+            padding-left: 1em;
+            padding-top: 0.2em;
+            padding-bottom: 0.2em;
+            margin-top: 0.5em;
+            background: $seventh-color;
+            border: $fourth-border-prefix;
+            box-shadow: $fifth-boxshadow-prefix;
+          }
+        }
+      }
+
+      .my-gifs-button {
+        text-align: center;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        border: 1px solid transparent;
+        border-style: dotted;
+        &:hover {
+          border-color: #110038;
+        }
+      }
+    }
+  }
+}
+
+.search {
+  color: $fourth-color;
+  @extend %second-font-prefix;
+  font-size: 12px;
+  @extend %search-box-style;
+  position: relative;
+  h3 {
+    background-image: $primary-background-gradient;
+    margin: 0% 0.5% 0% 0.3%;
+  }
+  div {
+    padding: 1% 1.5% 1% 1.5%;
+    display: flex;
+    input {
+      width: 88%;
+      padding: 1.1% 1.1% 1.1% 1.1%;
+      @extend %input-box-style;
+      @extend %font-prefix;
+      @extend %second-font-measure;
+    }
+
+    button {
+      color: $third-color;
+      @extend %font-prefix;
+      @extend %first-font-measure;
+      background: $secondary-color;
+      border: $secondary-border-prefix;
+      box-shadow: $fourth-boxshadow-prefix;
+      width: 10%;
+      margin: 0.5% 0% 0.5% 0.5%;
+      @extend %button-prefix;
+      span {
+        padding-left: 8%;
+      }
+    }
+
+    input:focus + button {
+      @extend %common-font-color;
+      @extend %button-prefix;
+      img {
+        content: url("../assets/lupa.svg");
+      }
+    }
+
+    button:focus {
+      @extend %active-focus-button-style;
+      @extend %button-prefix;
+      @extend %common-font-color;
+      img {
+        content: url("../assets/lupa.svg");
+      }
+    }
+  }
+
+  .search-suggest {
+    position: absolute;
+    display: none;
+    flex-flow: column nowrap;
+    width: 97%;
+
+    @extend %search-box-style;
+    input {
+      width: 89.5%;
+      margin-bottom: 1%;
+      padding-top: 0.1em;
+      @extend %options-search-style;
+      @extend %font-prefix;
+      @extend %second-font-measure;
+    }
+  }
+}
+
+.suggest {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  width: 84.5%;
+  input {
+    width: 100%;
+    padding: 0.3em 0em 0.3em 0.5em;
+    @extend %second-common-font-color;
+  }
+  #suggest-gifs {
+    width: 100%;
+  }
+}
+
+.trends {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  width: 84.5%;
+  input {
+    width: 100%;
+    padding: 0.3em 0em 0.3em 0.5em;
+    @extend %second-common-font-color; 
+  }
+}

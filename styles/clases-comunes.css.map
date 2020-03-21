@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "clases-comunes.scss",
+        "constants.scss"
+    ],
+    "names": [],
+    "file": "clases-comunes.css"
+}

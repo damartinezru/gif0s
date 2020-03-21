@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
+header h6 {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  color: #FFFFFF;
+  font-size: 12px;
+  padding: 0.2% 0.5% 0.3% 0.5%;
+  -webkit-box-shadow: 0 1px 0 0 #110038;
+          box-shadow: 0 1px 0 0 #110038;
+}
+
+header h6, header div .initial-buttons .dropdown .dropdown-content, .search div input:focus + button, .search div button:focus, .suggest input, .trends input, .font, .search div input, .search div button, .search .search-suggest input {
+  font-family: "Chakra Petch";
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.search {
+  font-family: "Chakra Petch";
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.font, .search div button {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+header div .initial-buttons .dropdown .dropdown-content, .search div input:focus + button, .search div button:focus, .search div input, .search .search-suggest input {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.suggest input, .trends input {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+header div .initial-buttons .dropdown .dropdown-content, .search div input:focus + button, .search div button:focus {
+  color: #110038;
+}
+
+.suggest input, .trends input {
+  color: #110038;
+}
+
+.button-one, .search div button, .search div input:focus + button, .search div button:focus {
+  background-color: #F7C9F3;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.search, .search .search-suggest {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.search div input {
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+          box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+}
+
+.search .search-suggest input {
+  background: #F0F0F0;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  color: #110038;
+}
+
+.input-box-gifs {
+  background: #FFFAFE;
+  border: 1px solid #E6BBE2;
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+          box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+}
+
+.button-active, header div .initial-buttons .create-gif-button button:focus, .search div button:focus {
+  outline: 0.2px dotted #110038;
+  outline-offset: -5px;
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+.font {
+  color: #110038;
+  text-align: center;
+}
+
+.letter-underline {
+  text-decoration: underline;
+}
+
+.general-margin {
+  margin-right: 7.5%;
+  margin-left: 7.5%;
+}
+
+header div {
+  margin-bottom: 1%;
+  margin-top: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header div .initial-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 40%;
+}
+
+header div .initial-buttons .create-gif-button {
+  width: 35%;
+}
+
+header div .initial-buttons .create-gif-button button {
+  width: 100%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+header div .initial-buttons .dropdown {
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  position: relative;
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons {
+  width: 100%;
+  margin: 0%;
+  z-index: 2;
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons .button-theme {
+  width: 80%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons .button-dropdown {
+  width: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+header div .initial-buttons .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  padding-top: 2.5em;
+  padding-bottom: 1em;
+  width: 99%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+header div .initial-buttons .dropdown .dropdown-content a {
+  width: 80%;
+  padding-left: 1em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin-top: 0.5em;
+  background: #FFF4FD;
+  border: 1px solid #CCA6C9;
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+header div .initial-buttons .my-gifs-button {
+  text-align: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid transparent;
+  border-style: dotted;
+}
+
+header div .initial-buttons .my-gifs-button:hover {
+  border-color: #110038;
+}
+
+.search {
+  color: #FFFFFF;
+  font-size: 12px;
+  position: relative;
+}
+
+.search h3 {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  margin: 0% 0.5% 0% 0.3%;
+}
+
+.search div {
+  padding: 1% 1.5% 1% 1.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.search div input {
+  width: 88%;
+  padding: 1.1% 1.1% 1.1% 1.1%;
+}
+
+.search div button {
+  color: #B4B4B4;
+  background: #E6E6E6;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  width: 10%;
+  margin: 0.5% 0% 0.5% 0.5%;
+}
+
+.search div button span {
+  padding-left: 8%;
+}
+
+.search div input:focus + button img {
+  content: url("../assets/lupa.svg");
+}
+
+.search div button:focus img {
+  content: url("../assets/lupa.svg");
+}
+
+.search .search-suggest {
+  position: absolute;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  width: 97%;
+}
+
+.search .search-suggest input {
+  width: 89.5%;
+  margin-bottom: 1%;
+  padding-top: 0.1em;
+}
+
+.suggest {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  width: 84.5%;
+}
+
+.suggest input {
+  width: 100%;
+  padding: 0.3em 0em 0.3em 0.5em;
+}
+
+.suggest #suggest-gifs {
+  width: 100%;
+}
+
+.trends {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  width: 84.5%;
+}
+
+.trends input {
+  width: 100%;
+  padding: 0.3em 0em 0.3em 0.5em;
+}
+/*# sourceMappingURL=style-home-light.css.map */

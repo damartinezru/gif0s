@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./styles/style-home-light.css" rel="stylesheet" />
+    <title>Gif0s</title>
+  </head>
+  <body> 
+    <header>
+      <h6>
+        ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
+        de visitas: 12.765.803
+      </h6>
+      <div class="general-margin">
+        <div>
+          <img src="./assets/gifOF_logo.png" />
+        </div>
+        <div class="initial-buttons">
+          <div class="create-gif-button">
+            <button class="font button-one">Crear Guifos</button>
+          </div> 
+          <div class="dropdown">
+            <div class="dropdown-buttons">
+              <button class="font button-one button-theme" >Elegir tema</button>
+              <button class="font button-one button-dropdown" id="button-dropdown" >
+                <img src="./assets/dropdown.svg" />
+              </button>
+            </div>
+            <div class="dropdown-content " id="dropdown-content">
+              <a href="#"><span class="letter-underline">S</span>ailor Day</a>
+              <a href="#"><span class="letter-underline">S</span>ailor Night</a>
+            </div> 
+          </div>
+            <div class="my-gifs-button">
+              <a class="font"><span class="letter-underline">M</span>is Guifos</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+    <section class="search general-margin">
+      <h3>Buscar</h3>
+      <div>
+        <input
+          id="search-input"
+          placeholder="Busca gifs, hashtags, temas, busca lo que quieras..."
+        />
+        <button>
+          <img src="./assets/lupa_inactive.svg" /><span>Buscar</span>
+        </button>
+      </div>
+      <div class="search-suggest" id="search-suggest" class="general-margin"> 
+        <input id="first-result" type="button" />
+        <input id="second-result" type="button" />
+        <input id="third-result" type="button" />
+      </div>
+    </section>
+    <section class="suggest general-margin" >
+      <input value="Hoy te sugerimos :" class="input-box-gifs" 
+      type="text"
+      disabled /> 
+      <div id="suggest-gifs"></div>
+    </section>
+    <section class="trends general-margin">
+      <input value ="Tendencias :" class="input-box-gifs" />
+      <div id="trends-gifs"></div>
+    </section>
+    <script src="./js/logic.js"></script>
+  </body>
+</html>
