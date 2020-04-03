@@ -1,74 +1,225 @@
-const dropdownButton = document.getElementById("button-dropdown");
-const dropdownContent = document.getElementById("dropdown-content");
-const inputSearch = document.getElementById("search-input");
-const buttonSearch = document.getElementById("search-button");
-const firstResult = document.getElementById("first-result");
-const suggestBlock = document.getElementById("search-suggest");
-const suggestGifsBlock = document.getElementById("suggest-gifs");
-const mainGetUrl = "https://api.giphy.com/v1/gifs/search";
-const trendGetUrl = "https://api.giphy.com/v1/gifs/trending";
-const apiKey = "wfb4bluWYWrK0DTU75QBPfJBHd9aEKk4";
+const constants = {
+  mainGetUrl: "https://api.giphy.com/v1/gifs/search",
+  trendGetUrl: "https://api.giphy.com/v1/gifs/trending",
+  apiKey: "wfb4bluWYWrK0DTU75QBPfJBHd9aEKk4"
+};
 
-/// querys
+const dropdownElementsRequested = {
+  dropdownButtons: document.getElementsByClassName("dropdown-buttons"),
+  dropdownContent: document.getElementById("dropdown-content"),
+  similarSearchResultsContainer: document.getElementById("search-suggest")
+};
 
-const Search = async () => {
+const searchBoxElementsRequested = {
+  searchInput: document.getElementById("search-input"),
+  searchButton: document.getElementById("search-button")
+};
+
+const suggestElementsRequested = {
+  suggestContainer: document.getElementById("suggest"),
+  suggestGifContainer: document.getElementById("suggest-gifs")
+};
+
+const trendElementsRequested = {
+  trendContainer: document.getElementById("trends"),
+  trendGifContainer: document.getElementById("trends-gifs")
+};
+
+const resultElementsRequested = {
+  resultTags: document.getElementById("tags"),
+  resultContainer: document.getElementById("results"),
+  resultGifContainer: document.getElementById("result-gifs"),
+  resultInputBox: document.getElementsByClassName("input-box-gifs")[2]
+};
+
+/// Querys
+
+const firstLoad = async () => {
   const searchQuery = await fetch(
-    `${mainGetUrl}?api_key=${apiKey}&q=${inputSearch.value}&limit=${4}`,
+    `${constants.trendGetUrl}?api_key=${constants.apiKey}&limit=${26}`,
+    {
+      method: "GET"
+    }
+  );
+  const searchResult = await searchQuery.json();
+  let suggestData = searchResult.data.slice(0, 4);
+  searchResult.data.splice(0, 4);
+  CreateGifs(suggestElementsRequested.suggestGifContainer, suggestData, false);
+  CreateGifs(trendElementsRequested.trendGifContainer, searchResult.data, true);
+};
+
+firstLoad();
+
+const Search = async buttonSelected => {
+  resultElementsRequested.resultGifContainer.innerHTML = "";
+  dropdownElementsRequested.similarSearchResultsContainer.style.display =
+    "none";
+  suggestElementsRequested.suggestContainer.style.display = "none";
+  trendElementsRequested.trendContainer.style.display = "none";
+  resultElementsRequested.resultContainer.style.display = "block";
+
+  if (buttonSelected) {
+    searchBoxElementsRequested.searchInput.value = buttonSelected.value;
+  }
+  const searchQuery = await fetch(
+    `${constants.mainGetUrl}?api_key=${constants.apiKey}&q=${
+      searchBoxElementsRequested.searchInput.value
+    }&limit=${25}`,
     {
       method: "GET"
     }
   );
   const response = await searchQuery.json();
-  console.log(response);
-  response.data.map(obj => {
-    let gifBlock = document.createElement("div");
-    let gifImage = document.createElement("img");
-    gifImage.setAttribute("src", obj.images.downsized_large.url);
-    gifBlock.append(gifImage);
-    suggestGifsBlock.appendChild(gifBlock);
-  });
+  resultElementsRequested.resultInputBox.value = buttonSelected.value;
+  CreateGifs(resultElementsRequested.resultGifContainer, response.data, true);
+  debugger
+  CreateResultTags(response.data,resultElementsRequested.resultTags); 
 };
 
-const Trends = async () => {
-  const trendsQuery = await fetch(
-    `${trendGetUrl}?api_key=${apiKey}&limit=${24}`,
-    {
-      method: "GET"
+const InputActive = async inputValue => {
+  if (inputValue.value !== "" && inputValue.value !== null) {
+    dropdownElementsRequested.similarSearchResultsContainer.innerHTML = "";
+    searchBoxElementsRequested.searchButton.childNodes[1].src =
+      "../assets/lupa.svg";
+    // searchButton.classList.add("button-active");
+
+    const searchWordGif = await fetch(
+      `${constants.mainGetUrl}?api_key=${constants.apiKey}&q=${
+        inputValue.value
+      }&limit=${4}`,
+      {
+        method: "GET"
+      }
+    );
+    const responseGifs = await searchWordGif.json();
+    const inputWords = responseGifs.data.splice(0, 3);
+    inputWords.map(gifObject => {
+      if (gifObject.title !== "") {
+        let inputButton = document.createElement("input");
+        inputButton.setAttribute("type", "button");
+        inputButton.setAttribute("onclick", `Search(this)`);
+        let titulo = gifObject.title.slice(0, gifObject.title.indexOf("GIF"));
+        dropdownElementsRequested.similarSearchResultsContainer.appendChild(
+          inputButton
+        );
+        inputButton.value = titulo;
+      }
+    });
+    dropdownElementsRequested.similarSearchResultsContainer.style.display =
+      "flex";
+  } else {
+    dropdownElementsRequested.similarSearchResultsContainer.style.display =
+      "none";
+  }
+};
+
+//Create block elements
+
+const CreateGifs = (block, data, noHeader) => {
+  data.map((gifObject, i) => {
+    const base = {
+      gifContainer: document.createElement("div"),
+      gifHeader: document.createElement("span"),
+      gifHeaderIcon: document.createElement("img"),
+      gifHeaderText: document.createElement("h4"),
+      gifImage: document.createElement("img"),
+      gifAnchor: document.createElement("a"),
+      gifButton: document.createElement("button"),
+      gifFooter: document.createElement("h4")
+    };
+    // gif image
+    base.gifImage.setAttribute("src", gifObject.images.downsized_large.url);
+    base.gifButton.innerText = "Ver más...";
+
+    if (noHeader) {
+      CreateCustomWidth(gifObject, base.gifContainer, i, data);
+      CreateFooterTags(base.gifFooter, gifObject.title, base.gifContainer.style.gridColumn);
+      base.gifContainer.append(base.gifFooter);
+    } else {
+      CreateHeaderTags(base.gifHeader, base.gifHeaderText, gifObject.title);
+      CreateCloseButton(base.gifHeader, base.gifHeaderIcon, base.gifAnchor);
+      base.gifContainer.append(base.gifHeader);
+      base.gifContainer.append(base.gifButton);
     }
-  );
-  const trendsQueryResult = await trendsQuery.json();
-  const suggestQuery = trendsQueryResult.data.splice(0, 4);
-  suggestQuery.map(obj => {
-    let gifBlock = document.createElement("div");
-    let gifImage = document.createElement("img");
-    gifImage.setAttribute("src", obj.images.downsized_large.url);
-    gifBlock.append(gifImage);
-    suggestGifsBlock.appendChild(gifBlock);
+    // append
+    base.gifContainer.append(base.gifImage);
+    block.appendChild(base.gifContainer);
   });
 };
 
-Trends();
 //actions
 
-dropdownButton.addEventListener("click", () => {
-  if (dropdownContent.style.display === "flex") {
-    dropdownContent.style.display = "none";
-  } else {
-    dropdownContent.style.display = "flex";
-  }
-});
-inputSearch.addEventListener("input", () => {
-  if (inputSearch.value !== "") {
-    suggestBlock.style.display = "flex";
-  } else {
-    suggestBlock.style.display = "none";
-  }
-});
+const CreateHeaderTags = (block, textBlock, title) => {
+  let gifTags = title.split(" ");
+  let smallTitle = gifTags.splice(0, gifTags.indexOf("GIF")).join("");
+  textBlock.innerText = `#${smallTitle}`;
+  block.append(textBlock);
+  return block;
+};
 
-firstResult.addEventListener("click", () => {
-  firstResult.classList.add("button-active");
-});
+const CreateFooterTags = (block, title, imageWidth) => {
+  let gifTags = title.split(" ");
+  gifTags.splice(gifTags.indexOf("GIF"), 1);
+  gifTags.splice(gifTags.indexOf("by"), 1);
+  gifTags.map(tg => {
+    block.innerText = block.innerText.concat(`#${tg} `);
+  });
+  console.log(imageWidth);
+  block.style.width = `${imageWidth}px`;
+};
 
-buttonSearch.addEventListener("click", () => {
-  Search();
-});
+const CreateCloseButton = (block, iconBlock, anchorBlock) => {
+  iconBlock.setAttribute("src", "../assets/close.svg");
+  iconBlock.setAttribute("role", "button");
+  iconBlock.appendChild(anchorBlock);
+  block.append(iconBlock);
+  return iconBlock;
+};
+
+const CreateResultTags = (data,block) => {
+  debugger;
+  let firstTags = data.slice(0,4);
+  console.log(firstTags);
+  firstTags.map((tg) => {
+     let tag = tg.title.split(" ").join("").splice(tg.title.indexOf("GIF"));
+     console.log(tag);
+     let buttonTag = document.createElement("button");
+     buttonTag.innerText = tag;
+     buttonTag.setAttribute("onclick", "Search()");
+     buttonTag.classList.add("tag-button");
+     block.append(buttonTag);
+  })
+}
+
+const CreateCustomWidth = (gifObject, gifBlock, index, data) => {
+  let gifWidth = Number(gifObject.images.downsized_large.width);
+  let beforeGifWidth =
+    index - 1 !== -1 ? Number(data[index - 1].images.downsized_large.width) : 0;
+  let afterGifWidth =
+    index + 1 !== data.length + 1
+      ? Number(data[index + 1].images.downsized_large.width)
+      : 0;
+
+  if (beforeGifWidth >= 500 && afterGifWidth >= 500) {
+    gifBlock.style.gridColumn = "span 2";
+  }
+  if (gifWidth >= 500) {
+    gifBlock.style.gridColumn = "span 2";
+
+  }
+};
+
+const OpenThemeDropdown = () => {
+  let buttons = dropdownElementsRequested.dropdownButtons[0].getElementsByTagName(
+    "button"
+  );
+  if (dropdownElementsRequested.dropdownContent.style.display === "flex") {
+    dropdownElementsRequested.dropdownContent.style.display = "none";
+    buttons[0].classList.remove("button-selected");
+    buttons[1].classList.remove("button-selected");
+  } else {
+    dropdownElementsRequested.dropdownContent.style.display = "flex";
+    buttons[0].classList.add("button-selected");
+    buttons[1].classList.add("button-selected");
+  }
+};

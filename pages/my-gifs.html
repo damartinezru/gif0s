@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../styles/style-mygifs.css" rel="stylesheet" />
+    <link href="../styles/style-home-light.css" rel="stylesheet" />
+    <title>Gif0s</title>
+  </head>
+  <body>
+    <header>
+      <h6>
+        ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
+        de visitas: 12.765.803
+      </h6>
+      <div class="general-margin">
+        <div>
+            <div class="images">
+                <a id="left-arrow" href="../index.html"><img src="../assets/arrow.svg"/></a>
+                <img src="../assets/gifOF_logo.png" />  
+            </div>
+        </div>
+        <div class="initial-buttons">
+          <div class="create-gif-button">
+            <button class="font button-one" onclick="OpenDialog()">Crear Guifos</button>
+          </div> 
+          <div class="dropdown">
+            <div class="dropdown-buttons">
+              <button class="font button-one button-theme" > Elegir tema</button>
+              <button class="font button-one button-dropdown" onclick="OpenThemeDropdown()" >
+                <img src="../assets/dropdown.svg" />
+              </button>
+            </div>
+            <div class="dropdown-content " id="dropdown-content">
+              <button><span class="letter-underline">S</span>ailor Day</button>
+              <button><span class="letter-underline">S</span>ailor Night</button>
+            </div> 
+          </div>
+            <div class="my-gifs-button">
+              <a class="font" onclick="ChangeNav()" href="../pages/my-gifs.html"><span class="letter-underline">M</span>is Guifos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="dialog general-margin">
+      <div class="dialog-content">
+        <img src="../assets/window img.png" />
+        <h4 class="font">Aqu&iacute; podr&aacute;s crear tus propios guifos</h4>
+        <div class="paragraph font">
+          <p>
+            Crear tu <span>guifo</span> es muy f&aacute;cil, graba cualquier
+            imagen con tu c&aacute;mara y obt&eacute;n guifos personalizados.
+            Los pasos para crear tu guifo son:
+          </p>
+          <ul>
+            <li>
+              <span>1)</span> Dar permisos de acceso a la cam&aacute;ra
+              (s&oacute;lo por el tiempo de uso)
+            </li>
+            <li><span>2)</span> Capturar tu momento guifo</li>
+            <li><span>3)</span> Revisar el momento</li>
+            <li><span>4)</span> Listo para subir y compartir</li>
+          </ul>
+          <p>¿Quieres comenzar a crear tu <span>guifo</span> ahora?</p>
+        </div>
+        <div class="buttons">
+          <button class="font button-theme buttons-dialog">Cancelar</button>
+          <button
+            class="font button-theme buttons-dialog"
+            onclick="openCamera()"
+          >
+            Comenzar
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="my-section general-margin">
+      <input value="" class="input-box-gifs" type="text" disabled />
+      <div id="my-section-gifs"></div>
+    </section>
+    <script src="../js/logic.js"></script>
+    <script src="../js/record.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.6/RecordRTC.js"></script>
+  </body>
+</html>

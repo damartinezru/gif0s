@@ -1,95 +1,122 @@
-@import './constants.scss';
+@import "./constants.scss";
 
 ///header
 %header-prefix {
-    background-image: $primary-background-gradient;
-    color: $fourth-color;
-    @extend %font-prefix;
-    font-size: 12px;
-    padding: 0.2% 0.5% 0.3% 0.5%;
-    box-shadow: $header-boxshadow-prefix;  
+  background-image: $primary-background-gradient;
+  color: $fourth-color;
+  @extend %second-font-prefix;
+  font-size: 12px;
+  padding: 0.2% 0.5% 0.3% 0.5%;
+  box-shadow: $header-boxshadow-prefix;
+}
+//gifs-header
+%gifs-header-prefix {
+  background-image: $primary-background-gradient;
+  color: $fourth-color;
+  @extend %second-font-prefix;
+  font-size: 14px;
+}
+
+///tag button
+%tag-button {
+  box-shadow: $seventh-boxshadow-prefix;
+  border: $sixth-border-prefix;
+  background: $tenth-color;
+  color: $fourth-color;
+  @extend %third-font-prefix;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 //font
+
 %font-prefix {
-    font-family: $primary-font;
-    font-weight: 400;
-    letter-spacing: 0; 
+  font-family: $primary-font;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 %second-font-prefix {
-    font-family: $primary-font;
-    font-weight: 600;
-    letter-spacing: 0; 
+  font-family: $primary-font;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
-//font + measures 
+%third-font-prefix {
+  font-family: $primary-font;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+//font + measures
 
 %first-font-measure {
-    font-size: 16px;
-    line-height: 18px;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 %second-font-measure {
-    font-size: 16px;
-    line-height: 22px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 %third-font-measure {
-    font-size: 14px;
-    line-height: 22px;
+  font-size: 14px;
+  line-height: 22px;
 }
-
 
 // common font + measure + color
 
 %common-font-color {
-    color: $primary-color;
-    @extend %font-prefix;
-    @extend %second-font-measure;
+  color: $primary-color;
+  @extend %font-prefix;
+  @extend %second-font-measure;
 }
 
 %second-common-font-color {
-    color: $primary-color;
-    @extend %font-prefix;
-    @extend %third-font-measure;
+  color: $primary-color;
+  @extend %font-prefix;
+  @extend %third-font-measure;
 }
-
 
 // common background + border + boxsadow
 %button-prefix {
-    background-color: $fifth-color; 
-    border: $primary-border-prefix;
-    box-shadow: $primary-boxshadow-prefix;
-} 
+  background-color: $fifth-color;
+  border: $primary-border-prefix;
+  box-shadow: $primary-boxshadow-prefix;
+}
 
-%search-box-style{
-    background: $secondary-color; 
-    box-shadow: $secondary-boxshadow-prefix;
+%search-box-style {
+  background: $secondary-color;
+  box-shadow: $secondary-boxshadow-prefix;
 }
 
 %input-box-style {
-    background: $fourth-color;
-    border: $secondary-border-prefix;
-    box-shadow: $third-boxshadow-prefix;
+  background: $fourth-color;
+  border: $secondary-border-prefix;
+  box-shadow: $third-boxshadow-prefix;
 }
 
 %options-search-style {
-    background: $sixth-color;
-    border: $secondary-border-prefix;
-    box-shadow: $fourth-boxshadow-prefix;
-    color: $primary-color;
+  background: $sixth-color;
+  border: $secondary-border-prefix;
+  box-shadow: $fourth-boxshadow-prefix;
+  color: $primary-color;
 }
 
 %input-box-gifs-style {
-    background: $eighth-color;
-    border: $fifth-border-prefix;
-    box-shadow: $sixth-boxshadow-prefix;
+  background: $eighth-color;
+  border: $fifth-border-prefix;
+  box-shadow: $sixth-boxshadow-prefix;
 }
 
 ///outline + filter
 %active-focus-button-style {
-    outline: 0.2px dotted $primary-color;
-    outline-offset: -5px;
-    filter: brightness(0.9);
+  outline: 0.2px dotted $primary-color;
+  outline-offset: -5px;
+}
+
+%hover-focus-div {
+  outline: 0.2px dotted $primary-color;
+  outline-offset: -1px;
 }

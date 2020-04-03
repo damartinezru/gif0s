@@ -17,8 +17,13 @@
   @extend %button-prefix;
 }
 .button-active {
-  @extend %active-focus-button-style;
+  @extend %common-font-color;
+  @extend %button-prefix;
 }
+.button-selected {
+  @extend %active-focus-button-style;
+  filter: $filter;
+} 
 .letter-underline {
   text-decoration: underline;
 }
@@ -28,6 +33,10 @@
 .general-margin {
   margin-right: 7.5%;
   margin-left: 7.5%;
+}
+
+.tag-button {
+  @extend %tag-button;
 }
 
 header {
@@ -40,7 +49,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    .images {
+      width: 11%;
+    }
     .initial-buttons {
       display: flex;
       align-items: center;
@@ -54,6 +65,7 @@ header {
           padding-bottom: 5%;
           &:focus {
             @extend %active-focus-button-style;
+            filter: $filter;
           }
         }
       }
@@ -89,16 +101,17 @@ header {
           flex-flow: column nowrap;
           background: $secondary-color;
           box-shadow: $fourth-boxshadow-prefix;
-          @extend %common-font-color;
-          a {
-            width: 80%;
+          button {
             padding-left: 1em;
-            padding-top: 0.2em;
-            padding-bottom: 0.2em;
+            width: 80%;
+            padding-top: 0.4em;
+            padding-bottom: 0.4em;
             margin-top: 0.5em;
             background: $seventh-color;
             border: $fourth-border-prefix;
             box-shadow: $fifth-boxshadow-prefix;
+            @extend %common-font-color;
+            text-align: left;
           }
         }
       }
@@ -110,7 +123,7 @@ header {
         border: 1px solid transparent;
         border-style: dotted;
         &:hover {
-          border-color: #110038;
+          border-color: $primary-color;
         }
       }
     }
@@ -130,6 +143,7 @@ header {
   div {
     padding: 1% 1.5% 1% 1.5%;
     display: flex;
+    z-index: 1;
     input {
       width: 88%;
       padding: 1.1% 1.1% 1.1% 1.1%;
@@ -159,7 +173,8 @@ header {
       img {
         content: url("../assets/lupa.svg");
       }
-    }
+    } 
+
 
     button:focus {
       @extend %active-focus-button-style;
@@ -179,6 +194,7 @@ header {
 
     @extend %search-box-style;
     input {
+      text-align: start;
       width: 89.5%;
       margin-bottom: 1%;
       padding-top: 0.1em;
@@ -193,13 +209,13 @@ header {
   margin-top: 4em;
   margin-bottom: 4em;
   input {
-    width: 99.9%;
-    // padding: 0.3em 0em 0.3em 0.5em;
+    width: 99.1%;
+    padding: 0.3em 0em 0.3em 0.5em;
     @extend %second-common-font-color;
   }
   #suggest-gifs {
     display: grid;
-    grid-template-columns: repeat(4,24%);
+    grid-template-columns: repeat(4, 24%);
     grid-template-rows: 1;
     margin-top: 2%;
     grid-gap: 1.3%;
@@ -207,21 +223,151 @@ header {
       background: $ninth-color;
       box-shadow: $secondary-boxshadow-prefix;
       grid-column: span 1;
-      height: 300px;
+      height: 290px;
       padding: 1.5%;
+      position: relative;
+      display: grid;
+      flex-flow: row wrap;
       img {
         width: 100%;
-        height: 250px;
+        height: 265px;
+      }
+      span {
+        display: flex;
+        height: 25px;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        @extend %gifs-header-prefix;
+        h4 {
+          padding-left: 2%;
+        }
+        img {
+          width: 16px;
+          height: 14px;
+          justify-self: flex-end;
+        }
+      }
+      button {
+        position: absolute;
+        z-index: 1;
+        transform: translate(1em, 18em);
+        box-shadow: $seventh-boxshadow-prefix;
+        border: $sixth-border-prefix;
+        background: $tenth-color;
+        color: $fourth-color;
+        @extend %third-font-prefix;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 2% 5% 2% 5%;
       }
     }
   }
 }
 
+.tags {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  position: absolute;
+}
 .trends {
   margin-top: 4em;
   margin-bottom: 4em;
   input {
-    // padding: 0.3em 0em 0.3em 0.5em;
-    @extend %second-common-font-color; 
+    width: 99.1%;
+    padding: 0.3em 0em 0.3em 0.5em;
+    @extend %second-common-font-color;
   }
+  #trends-gifs {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: minmax(250px, auto);
+    grid-auto-flow: dense;
+    margin-top: 2%;
+    grid-gap: 1.3%; 
+
+    div {
+      height: 315px;
+      position: relative;
+      width: 100%;
+      padding: 0 0.1em 0 0.1em;
+      img {
+        width: 99%;
+        height: 310px;
+        align-self: center;
+      }
+      h4 {
+        display: none;
+        z-index: 1;
+        position: absolute;
+        transform: translateY(20.3em);
+        padding: 0.2em 0 0.3em 0;
+        @extend %gifs-header-prefix;
+      }
+    }
+
+    div:hover {
+      background: $ninth-color;
+      box-shadow: $secondary-boxshadow-prefix;
+      img {
+      @extend %hover-focus-div;
+
+      }
+      h4 {
+        display: inline;
+
+      }
+    }
+  }
+}
+
+.results {
+    display: none; 
+    margin-top: 8%;
+    input {
+      width: 99.1%;
+      padding: 0.3em 0em 0.3em 0.5em;
+      @extend %second-common-font-color;
+    }
+    #result-gifs {
+      margin-top: 2%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-auto-rows: minmax(250px, auto);
+      grid-auto-flow: dense;
+      margin-top: 2%;
+      grid-gap: 1.3%; 
+  
+      div {
+        height: 320px;
+        position: relative;
+        display: grid;
+        width: 100%;
+        img {
+          width: 99%;
+          height: 310px;
+          align-self: center;
+        }
+        h4 {
+          display: none;
+          z-index: 1;
+          position: absolute;
+          transform: translateY(20.3em);
+          padding: 0.2em 0 0.3em 0; 
+          @extend %gifs-header-prefix;
+        }
+      }
+  
+      div:hover {
+        background: $ninth-color;
+        box-shadow: $secondary-boxshadow-prefix;
+        img {
+          @extend %hover-focus-div;
+        }
+        h4 {
+          display: inline;
+        }
+      }
+    }
 }

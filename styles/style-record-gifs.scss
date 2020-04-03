@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
+@import "./constants.scss";
+@import "./clases-comunes.scss";
+
+///crear clase comun con todo esto
+* {
+  margin: 0%;
+  padding: 0%;
+}
+.general-margin {
+  margin-right: 7.5%;
+  margin-left: 7.5%;
+}
+
+.input-box-gifs {
+  @extend %input-box-gifs-style;
+}
+
+.font {
+  color: $primary-color;
+  @extend %font-prefix;
+  @extend %first-font-measure;
+  text-align: center;
+}
+
+.button-one {
+  @extend %button-prefix;
+}
+
+
+.dialog {
+  padding: 2% 17% 2% 17%;
+  .dialog-content {
+    @extend %search-box-style;
+    padding: 5% 5% 5% 5%;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 5% 80% 15%;
+    row-gap: 5%;
+    h4 {
+      text-align: start;
+      font-weight: bold;
+    }
+    .paragraph {
+      display: flex;
+      flex-flow: column;
+      grid-area: 2/2/2/2;
+      justify-self: flex-start;
+      text-align: start;
+      li {
+        margin-top: 2%;
+        span {
+          font-weight: bolder;
+          font-style: italic;
+        }
+      }
+      p {
+        margin-top: 2%;
+      }
+    }
+    .buttons {
+      grid-area: 3/2/3/2;
+      justify-self: flex-end;
+      align-items: baseline;
+    }
+  }
+}
+
+ul li {
+  list-style-type: none;
+  color: $primary-color;
+  @extend %font-prefix;
+  font-size: 14px;
+  line-height: 20px;
+  span {
+    @extend %second-font-prefix;
+  }
+}
+
+header {
+  h6 {
+    @extend %header-prefix;
+  }
+  div {
+    margin-bottom: 1%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .images {
+        width: 11%;
+    }
+    .initial-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 40%;
+      .create-gif-button {
+        width: 35%;
+        button {
+          width: 100%;
+          padding-top: 5%;
+          padding-bottom: 5%;
+          &:focus {
+            @extend %active-focus-button-style;
+            filter: $filter;
+          }
+        }
+      }
+      .dropdown {
+        width: 35%;
+        display: flex;
+        flex-flow: column wrap;
+        position: relative;
+
+        .dropdown-buttons {
+          width: 100%;
+          margin: 0%;
+          z-index: 2;
+          .button-theme {
+            width: 80%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+          .button-dropdown {
+            width: 20%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          z-index: 1;
+          padding-top: 2.5em;
+          padding-bottom: 1em;
+          width: 99%;
+          flex-flow: column nowrap;
+          background: $secondary-color;
+          box-shadow: $fourth-boxshadow-prefix;
+          button {
+            padding-left: 1em;
+            width: 80%;
+            padding-top: 0.4em;
+            padding-bottom: 0.4em;
+            margin-top: 0.5em;
+            background: $seventh-color;
+            border: $fourth-border-prefix;
+            box-shadow: $fifth-boxshadow-prefix;
+            @extend %common-font-color;
+            text-align: left;
+          }
+        }
+      }
+
+      .my-gifs-button {
+        text-align: center;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        border: 1px solid transparent;
+        border-style: dotted;
+        &:hover {
+          border-color: #110038;
+        }
+      }
+    }
+  }
+}
+
+///
+
+.my-section{
+    input{
+        width: 100%;
+        padding: 0.3em 0em 0.3em 0.5em;
+    }
+}

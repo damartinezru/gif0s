@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./styles/style-home-light.css" rel="stylesheet" />
-    <!-- <link rel="import" href="./pages/header.html"/> -->
+    <link href="../styles/style-home-light.css" rel="stylesheet" />
+
     <title>Gif0s</title>
   </head>
-  <body>
-    <header>
+  <body> 
+    <template>
       <h6>
         ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
         de visitas: 12.765.803
@@ -16,6 +16,7 @@
       <div class="general-margin">
         <div>
             <div class="images">
+                <!-- <a id="left-arrow" href="../index.html"><img src="../assets/arrow.svg"/></a> -->
                 <img src="../assets/gifOF_logo.png" />  
             </div>
         </div>
@@ -41,44 +42,6 @@
           </div>
         </div>
       </div>
-    </header>
-    <section class="search general-margin">
-      <h3>Buscar</h3>
-      <div>
-        <input
-          id="search-input"
-          placeholder="Busca gifs, hashtags, temas, busca lo que quieras..."
-          oninput="InputActive(this)"
-        />
-        <button id="search-button" onclick="Search()">
-          <img src="./assets/lupa_inactive.svg" /><span>Buscar</span>
-        </button>
-      </div>
-      <div
-        class="search-suggest"
-        id="search-suggest"
-      ></div>
-    </section>
-    <section class="tags general-margin" id="tags">
-
-    </section>
-    <section class="suggest general-margin" id="suggest">
-      <input
-        value="Hoy te sugerimos :"
-        class="input-box-gifs"
-        type="text"
-        disabled
-      />
-      <div id="suggest-gifs"></div>
-    </section>
-    <section class="trends general-margin" id="trends">
-      <input value="Tendencias :" class="input-box-gifs" type="text" disabled />
-      <div id="trends-gifs"></div>
-    </section>
-    <section class="results general-margin" id="results">
-      <input value="" class="input-box-gifs" type="text" disabled />
-      <div id="result-gifs"></div>
-    </section>
-    <script src="./js/logic.js"></script>
+    </template>
   </body>
 </html>
