@@ -87,9 +87,8 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
           box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
 }
 
-.search .search-suggest input {
+header div .initial-buttons .dropdown .dropdown-content button:hover, .search .search-suggest input {
   background: #F0F0F0;
-  border: 1px solid #979797;
   -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
@@ -102,12 +101,12 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
           box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
 }
 
-.button-selected, header div .initial-buttons .create-gif-button button:focus, .search div button:focus {
+.button-selected, header div .initial-buttons .create-gif-button button:hover, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-theme, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-dropdown, .search div button:focus, .suggest #suggest-gifs div:hover button {
   outline: 0.2px dotted #110038;
   outline-offset: -5px;
 }
 
-.trends #trends-gifs div:hover img, .results #result-gifs div:hover img {
+.search .search-suggest input:focus, .search .search-suggest input:hover, .suggest #suggest-gifs div:hover img, .trends #trends-gifs div:hover img, .results #result-gifs div:hover img {
   outline: 0.2px dotted #110038;
   outline-offset: -1px;
 }
@@ -134,6 +133,15 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
 .general-margin {
   margin-right: 7.5%;
   margin-left: 7.5%;
+}
+
+.tag-button {
+  margin-right: 2%;
+  padding: 0.8em;
+}
+
+.disabled {
+  color: #AC9EB8;
 }
 
 header div {
@@ -177,7 +185,7 @@ header div .initial-buttons .create-gif-button button {
   padding-bottom: 5%;
 }
 
-header div .initial-buttons .create-gif-button button:focus {
+header div .initial-buttons .create-gif-button button:hover {
   -webkit-filter: brightness(0.9);
           filter: brightness(0.9);
 }
@@ -212,6 +220,16 @@ header div .initial-buttons .dropdown .dropdown-buttons .button-dropdown {
   padding-bottom: 5%;
 }
 
+header div .initial-buttons .dropdown .dropdown-buttons:hover .button-theme {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons:hover .button-dropdown {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
 header div .initial-buttons .dropdown .dropdown-content {
   display: none;
   position: absolute;
@@ -241,12 +259,20 @@ header div .initial-buttons .dropdown .dropdown-content button {
   text-align: left;
 }
 
+header div .initial-buttons .dropdown .dropdown-content button:hover {
+  border: 1px solid #808080;
+}
+
 header div .initial-buttons .my-gifs-button {
   text-align: center;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   border: 1px solid transparent;
   border-style: dotted;
+}
+
+header div .initial-buttons .my-gifs-button a {
+  text-decoration: none;
 }
 
 header div .initial-buttons .my-gifs-button:hover {
@@ -315,6 +341,12 @@ header div .initial-buttons .my-gifs-button:hover {
   width: 89.5%;
   margin-bottom: 1%;
   padding-top: 0.1em;
+  border: 1px solid #979797;
+}
+
+.search .search-suggest input:hover {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
 }
 
 .suggest {
@@ -404,7 +436,7 @@ header div .initial-buttons .my-gifs-button:hover {
 .tags {
   margin-top: 1em;
   margin-bottom: 1em;
-  position: absolute;
+  width: 100%;
 }
 
 .trends {
@@ -465,7 +497,7 @@ header div .initial-buttons .my-gifs-button:hover {
 
 .results {
   display: none;
-  margin-top: 8%;
+  margin-top: 4%;
 }
 
 .results input {

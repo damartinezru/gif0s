@@ -37,6 +37,13 @@
 
 .tag-button {
   @extend %tag-button;
+  margin-right: 2%;
+  padding: 0.8em;
+
+}
+
+.disabled {
+  color:$eleventh-color;
 }
 
 header {
@@ -63,7 +70,7 @@ header {
           width: 100%;
           padding-top: 5%;
           padding-bottom: 5%;
-          &:focus {
+          &:hover {
             @extend %active-focus-button-style;
             filter: $filter;
           }
@@ -84,10 +91,23 @@ header {
             padding-top: 5%;
             padding-bottom: 5%;
           }
+          
           .button-dropdown {
             width: 20%;
             padding-top: 5%;
             padding-bottom: 5%;
+          }
+
+        }
+
+        .dropdown-buttons:hover{
+          .button-theme{
+            @extend %active-focus-button-style;
+            filter: $filter;
+          }
+          .button-dropdown {
+            @extend %active-focus-button-style;
+            filter: $filter;
           }
         }
 
@@ -113,6 +133,10 @@ header {
             @extend %common-font-color;
             text-align: left;
           }
+          button:hover {
+            @extend %options-search-style;
+            border:$thrid-border-prefix;
+          }
         }
       }
 
@@ -122,6 +146,9 @@ header {
         padding-bottom: 0.5em;
         border: 1px solid transparent;
         border-style: dotted;
+        a {
+          text-decoration: none;
+        }
         &:hover {
           border-color: $primary-color;
         }
@@ -199,8 +226,18 @@ header {
       margin-bottom: 1%;
       padding-top: 0.1em;
       @extend %options-search-style;
+      border: $secondary-border-prefix;
       @extend %font-prefix;
       @extend %second-font-measure;
+    }
+    input:focus {
+      @extend %hover-focus-div;
+
+    }
+    input:hover {
+      @extend %hover-focus-div;
+      filter: $filter;
+      
     }
   }
 }
@@ -232,6 +269,7 @@ header {
         width: 100%;
         height: 265px;
       }
+
       span {
         display: flex;
         height: 25px;
@@ -261,6 +299,16 @@ header {
         line-height: 18px;
         padding: 2% 5% 2% 5%;
       }
+
+    }
+    div:hover {
+      img{
+        @extend %hover-focus-div;
+      }
+      button{
+        @extend %active-focus-button-style;
+      }
+
     }
   }
 }
@@ -268,7 +316,7 @@ header {
 .tags {
   margin-top: 1em;
   margin-bottom: 1em;
-  position: absolute;
+  width: 100%;
 }
 .trends {
   margin-top: 4em;
@@ -324,7 +372,7 @@ header {
 
 .results {
     display: none; 
-    margin-top: 8%;
+    margin-top: 4%;
     input {
       width: 99.1%;
       padding: 0.3em 0em 0.3em 0.5em;

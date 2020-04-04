@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./styles/style-home-light.css" rel="stylesheet" />
-    <!-- <link rel="import" href="./pages/header.html"/> -->
     <title>Gif0s</title>
   </head>
-  <body>
+  <body onload="FirstLoad()">
     <header>
       <h6>
         ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
@@ -16,27 +15,27 @@
       <div class="general-margin">
         <div>
             <div class="images">
-                <img src="../assets/gifOF_logo.png" />  
+              <a href="../index.html"><img src="../assets/gifOF_logo.png" />  </a>
             </div>
         </div>
         <div class="initial-buttons">
           <div class="create-gif-button">
-            <button class="font button-one" onclick="OpenDialog()">Crear Guifos</button>
+            <button class="font button-one" onclick="OpenDialogMyGifs(this)">Crear Guifos</button>
           </div> 
           <div class="dropdown">
             <div class="dropdown-buttons">
-              <button class="font button-one button-theme" > Elegir tema</button>
-              <button class="font button-one button-dropdown" onclick="OpenThemeDropdown()" >
+              <button class="font button-one button-theme" onclick="OpenThemeDropdown()" > Elegir tema</button>
+              <button class="font button-one button-dropdown " onclick="OpenThemeDropdown()" >
                 <img src="../assets/dropdown.svg" />
               </button>
             </div>
             <div class="dropdown-content " id="dropdown-content">
-              <button><span class="letter-underline">S</span>ailor Day</button>
-              <button><span class="letter-underline">S</span>ailor Night</button>
+              <button onclick="SelectTheme(true)"><span class="letter-underline">S</span>ailor Day</button>
+              <button onclick="SelectTheme()"><span class="letter-underline">S</span>ailor Night</button>
             </div> 
           </div>
             <div class="my-gifs-button">
-              <a class="font" onclick="ChangeNav()" href="../pages/my-gifs.html"><span class="letter-underline">M</span>is Guifos</a>
+              <a class="font"  href="../pages/my-gifs.html"><span class="letter-underline">M</span>is Guifos</a>
             </div>
           </div>
         </div>

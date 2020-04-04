@@ -1,0 +1,137 @@
+@import "./constants.scss";
+@import "./clases-comunes.scss";
+
+* {
+  background-color: $primary-color;
+  margin: 0%;
+  padding: 0%;
+}
+.font {
+  color: $primary-color;
+  @extend %font-prefix;
+  @extend %first-font-measure;
+  text-align: center;
+}
+
+.button-one {
+  @extend %button-prefix;
+}
+.button-active {
+  @extend %common-font-color;
+  @extend %button-prefix;
+}
+.button-selected {
+  @extend %active-focus-button-style;
+  filter: $filter;
+}
+.letter-underline {
+  text-decoration: underline;
+}
+.input-box-gifs {
+  @extend %input-box-gifs-style;
+}
+.general-margin {
+  margin-right: 7.5%;
+  margin-left: 7.5%;
+}
+
+.tag-button {
+  @extend %tag-button;
+  margin-right: 2%;
+  padding: 0.8em;
+}
+
+
+header {
+  h6 {
+    @extend %header-prefix;
+  }
+  div {
+    margin-bottom: 1%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .images {
+      width: 11%;
+    }
+    .initial-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 40%;
+      .create-gif-button {
+        width: 35%;
+        button {
+          width: 100%;
+          padding-top: 5%;
+          padding-bottom: 5%;
+          &:focus {
+            @extend %active-focus-button-style;
+            filter: $filter;
+          }
+        }
+      }
+      .dropdown {
+        width: 35%;
+        display: flex;
+        flex-flow: column wrap;
+        position: relative;
+
+        .dropdown-buttons {
+          width: 100%;
+          margin: 0%;
+          z-index: 2;
+          .button-theme {
+            width: 80%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+          .button-dropdown {
+            width: 20%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+          }
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          z-index: 1;
+          padding-top: 2.5em;
+          padding-bottom: 1em;
+          width: 99%;
+          flex-flow: column nowrap;
+          background: $secondary-color;
+          box-shadow: $fourth-boxshadow-prefix;
+          button {
+            padding-left: 1em;
+            width: 80%;
+            padding-top: 0.4em;
+            padding-bottom: 0.4em;
+            margin-top: 0.5em;
+            background: $seventh-color;
+            border: $fourth-border-prefix;
+            box-shadow: $fifth-boxshadow-prefix;
+            @extend %common-font-color;
+            text-align: left;
+          }
+        }
+      }
+
+      .my-gifs-button {
+        text-align: center;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        border: 1px solid transparent;
+        border-style: dotted;
+        a {
+          text-decoration: none;
+        }
+        &:hover {
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+}

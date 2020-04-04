@@ -1,1 +1,226 @@
-/* No CSS *//*# sourceMappingURL=style-home-dark.css.map */
+header h6 {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  color: #FFFFFF;
+  font-size: 12px;
+  padding: 0.2% 0.5% 0.3% 0.5%;
+  -webkit-box-shadow: 0 1px 0 0 #110038;
+          box-shadow: 0 1px 0 0 #110038;
+}
+
+.tag-button {
+  -webkit-box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+  border: 1px solid #4C2F99;
+  background: #4180F6;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.button-active, header div .initial-buttons .dropdown .dropdown-content button, .font {
+  font-family: "Chakra Petch";
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+header h6 {
+  font-family: "Chakra Petch";
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.tag-button {
+  font-family: "Chakra Petch";
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+.font {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.button-active, header div .initial-buttons .dropdown .dropdown-content button {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.button-active, header div .initial-buttons .dropdown .dropdown-content button {
+  color: #110038;
+}
+
+.button-one, .button-active {
+  background-color: #F7C9F3;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.input-box-gifs {
+  background: #FFFAFE;
+  border: 1px solid #E6BBE2;
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+          box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+}
+
+.button-selected, header div .initial-buttons .create-gif-button button:focus {
+  outline: 0.2px dotted #110038;
+  outline-offset: -5px;
+}
+
+* {
+  background-color: #110038;
+  margin: 0%;
+  padding: 0%;
+}
+
+.font {
+  color: #110038;
+  text-align: center;
+}
+
+.button-selected {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+.letter-underline {
+  text-decoration: underline;
+}
+
+.general-margin {
+  margin-right: 7.5%;
+  margin-left: 7.5%;
+}
+
+.tag-button {
+  margin-right: 2%;
+  padding: 0.8em;
+}
+
+.disabled {
+  color: #AC9EB8;
+}
+
+header div {
+  margin-bottom: 1%;
+  margin-top: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header div .images {
+  width: 11%;
+}
+
+header div .initial-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 40%;
+}
+
+header div .initial-buttons .create-gif-button {
+  width: 35%;
+}
+
+header div .initial-buttons .create-gif-button button {
+  width: 100%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+header div .initial-buttons .create-gif-button button:focus {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+header div .initial-buttons .dropdown {
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  position: relative;
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons {
+  width: 100%;
+  margin: 0%;
+  z-index: 2;
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons .button-theme {
+  width: 80%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons .button-dropdown {
+  width: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+header div .initial-buttons .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  padding-top: 2.5em;
+  padding-bottom: 1em;
+  width: 99%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+header div .initial-buttons .dropdown .dropdown-content button {
+  padding-left: 1em;
+  width: 80%;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  margin-top: 0.5em;
+  background: #FFF4FD;
+  border: 1px solid #CCA6C9;
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+  text-align: left;
+}
+
+header div .initial-buttons .my-gifs-button {
+  text-align: center;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid transparent;
+  border-style: dotted;
+}
+
+header div .initial-buttons .my-gifs-button a {
+  text-decoration: none;
+}
+
+header div .initial-buttons .my-gifs-button:hover {
+  border-color: #110038;
+}
+/*# sourceMappingURL=style-home-dark.css.map */

@@ -34,7 +34,7 @@ const resultElementsRequested = {
 
 /// Querys
 
-const firstLoad = async () => {
+const TrendFetch = async () => {
   const searchQuery = await fetch(
     `${constants.trendGetUrl}?api_key=${constants.apiKey}&limit=${26}`,
     {
@@ -42,15 +42,32 @@ const firstLoad = async () => {
     }
   );
   const searchResult = await searchQuery.json();
+  return searchResult;
+};
+
+const SearchFetch = async (inputValue, limit) => {
+  const searchQuery = await fetch(
+    `${constants.mainGetUrl}?api_key=${constants.apiKey}&q=${inputValue}&limit=${limit}`,
+    {
+      method: "GET"
+    }
+  );
+  const response = await searchQuery.json();
+  return response;
+};
+
+///
+ 
+const FirstLoad = async () => {
+  const searchResult = await TrendFetch();
   let suggestData = searchResult.data.slice(0, 4);
   searchResult.data.splice(0, 4);
   CreateGifs(suggestElementsRequested.suggestGifContainer, suggestData, false);
   CreateGifs(trendElementsRequested.trendGifContainer, searchResult.data, true);
 };
 
-firstLoad();
 
-const Search = async buttonSelected => {
+const Search = async (buttonSelected, hasHash) => {
   resultElementsRequested.resultGifContainer.innerHTML = "";
   dropdownElementsRequested.similarSearchResultsContainer.style.display =
     "none";
@@ -59,21 +76,22 @@ const Search = async buttonSelected => {
   resultElementsRequested.resultContainer.style.display = "block";
 
   if (buttonSelected) {
-    searchBoxElementsRequested.searchInput.value = buttonSelected.value;
-  }
-  const searchQuery = await fetch(
-    `${constants.mainGetUrl}?api_key=${constants.apiKey}&q=${
-      searchBoxElementsRequested.searchInput.value
-    }&limit=${25}`,
-    {
-      method: "GET"
+    if (hasHash) {
+      let noTag = buttonSelected.innerText.split("#");
+      noTag.splice(noTag.indexOf(""), 1).join("");
+      searchBoxElementsRequested.searchInput.value = noTag[0];
+      resultElementsRequested.resultInputBox.value = noTag[0];
+    } else {
+      searchBoxElementsRequested.searchInput.value = buttonSelected.value;
+      resultElementsRequested.resultInputBox.value = buttonSelected.value;
     }
+  }
+  const response = await SearchFetch(
+    searchBoxElementsRequested.searchInput.value,
+    25
   );
-  const response = await searchQuery.json();
-  resultElementsRequested.resultInputBox.value = buttonSelected.value;
+  CreateResultTags(response.data, resultElementsRequested.resultTags);
   CreateGifs(resultElementsRequested.resultGifContainer, response.data, true);
-  debugger
-  CreateResultTags(response.data,resultElementsRequested.resultTags); 
 };
 
 const InputActive = async inputValue => {
@@ -81,30 +99,8 @@ const InputActive = async inputValue => {
     dropdownElementsRequested.similarSearchResultsContainer.innerHTML = "";
     searchBoxElementsRequested.searchButton.childNodes[1].src =
       "../assets/lupa.svg";
-    // searchButton.classList.add("button-active");
-
-    const searchWordGif = await fetch(
-      `${constants.mainGetUrl}?api_key=${constants.apiKey}&q=${
-        inputValue.value
-      }&limit=${4}`,
-      {
-        method: "GET"
-      }
-    );
-    const responseGifs = await searchWordGif.json();
-    const inputWords = responseGifs.data.splice(0, 3);
-    inputWords.map(gifObject => {
-      if (gifObject.title !== "") {
-        let inputButton = document.createElement("input");
-        inputButton.setAttribute("type", "button");
-        inputButton.setAttribute("onclick", `Search(this)`);
-        let titulo = gifObject.title.slice(0, gifObject.title.indexOf("GIF"));
-        dropdownElementsRequested.similarSearchResultsContainer.appendChild(
-          inputButton
-        );
-        inputButton.value = titulo;
-      }
-    });
+    const responseGifs = await SearchFetch(inputValue.value, 4);
+    CreateSuggestSearchBox(responseGifs);
     dropdownElementsRequested.similarSearchResultsContainer.style.display =
       "flex";
   } else {
@@ -129,11 +125,15 @@ const CreateGifs = (block, data, noHeader) => {
     };
     // gif image
     base.gifImage.setAttribute("src", gifObject.images.downsized_large.url);
-    base.gifButton.innerText = "Ver más...";
-
+    //
+    AssignButtonValue(gifObject.title, base.gifButton);
     if (noHeader) {
       CreateCustomWidth(gifObject, base.gifContainer, i, data);
-      CreateFooterTags(base.gifFooter, gifObject.title, base.gifContainer.style.gridColumn);
+      CreateFooterTags(
+        base.gifFooter,
+        gifObject.title,
+        base.gifContainer.style.gridColumn
+      );
       base.gifContainer.append(base.gifFooter);
     } else {
       CreateHeaderTags(base.gifHeader, base.gifHeaderText, gifObject.title);
@@ -157,6 +157,13 @@ const CreateHeaderTags = (block, textBlock, title) => {
   return block;
 };
 
+const AssignButtonValue = (title, gifButton) => {
+  gifButton.innerText = "Ver más...";
+  console.log(gifButton);
+  gifButton.value = title;
+  gifButton.setAttribute("onclick", "Search(this)");
+};
+
 const CreateFooterTags = (block, title, imageWidth) => {
   let gifTags = title.split(" ");
   gifTags.splice(gifTags.indexOf("GIF"), 1);
@@ -164,7 +171,6 @@ const CreateFooterTags = (block, title, imageWidth) => {
   gifTags.map(tg => {
     block.innerText = block.innerText.concat(`#${tg} `);
   });
-  console.log(imageWidth);
   block.style.width = `${imageWidth}px`;
 };
 
@@ -176,20 +182,22 @@ const CreateCloseButton = (block, iconBlock, anchorBlock) => {
   return iconBlock;
 };
 
-const CreateResultTags = (data,block) => {
-  debugger;
-  let firstTags = data.slice(0,4);
+const CreateResultTags = (data, block) => {
+  block.innerHTML = "";
+  let firstTags = data.slice(0, 2);
   console.log(firstTags);
-  firstTags.map((tg) => {
-     let tag = tg.title.split(" ").join("").splice(tg.title.indexOf("GIF"));
-     console.log(tag);
-     let buttonTag = document.createElement("button");
-     buttonTag.innerText = tag;
-     buttonTag.setAttribute("onclick", "Search()");
-     buttonTag.classList.add("tag-button");
-     block.append(buttonTag);
-  })
-}
+  firstTags.map(tg => {
+    let tagArray = tg.title.split(" ");
+    let tag = tagArray.splice(0, tagArray.indexOf("GIF"));
+    tag.map(word => {
+      let buttonTag = document.createElement("button");
+      buttonTag.innerText = `#${word}`;
+      buttonTag.setAttribute("onclick", "Search(this,true)");
+      buttonTag.classList.add("tag-button");
+      block.append(buttonTag);
+    });
+  });
+};
 
 const CreateCustomWidth = (gifObject, gifBlock, index, data) => {
   let gifWidth = Number(gifObject.images.downsized_large.width);
@@ -205,14 +213,33 @@ const CreateCustomWidth = (gifObject, gifBlock, index, data) => {
   }
   if (gifWidth >= 500) {
     gifBlock.style.gridColumn = "span 2";
-
   }
+};
+
+const CreateSuggestSearchBox = response => {
+  const inputWords = response.data.splice(0, 3);
+  inputWords.map(gifObject => {
+    if (gifObject.title !== "") {
+      let inputButton = document.createElement("input");
+      inputButton.setAttribute("type", "button");
+      inputButton.setAttribute("onclick", `Search(this)`);
+      let description = gifObject.title.slice(
+        0,
+        gifObject.title.indexOf("GIF")
+      );
+      dropdownElementsRequested.similarSearchResultsContainer.appendChild(
+        inputButton
+      );
+      inputButton.value = description;
+    }
+  });
 };
 
 const OpenThemeDropdown = () => {
   let buttons = dropdownElementsRequested.dropdownButtons[0].getElementsByTagName(
     "button"
   );
+  console.log(dropdownElementsRequested.dropdownContent.style.display);
   if (dropdownElementsRequested.dropdownContent.style.display === "flex") {
     dropdownElementsRequested.dropdownContent.style.display = "none";
     buttons[0].classList.remove("button-selected");
@@ -223,3 +250,24 @@ const OpenThemeDropdown = () => {
     buttons[1].classList.add("button-selected");
   }
 };
+
+const SelectTheme = isDay => {
+  let style = document.getElementsByTagName("link");
+  if (isDay) {
+    style[0].href = "../styles/style-home-light.css";
+  } else {
+    style[0].href = "../styles/style-home-dark.css";
+  }
+};
+
+const OpenDialogMyGifs = (button) => {
+  let buttonsDropdown = dropdownElementsRequested.dropdownButtons[0].getElementsByTagName(
+    "button"
+  );
+  buttonsDropdown[0].classList.remove("button-selected");
+  buttonsDropdown[1].classList.remove("button-selected");
+  button.classList.add("button-selected");
+  window.location = "../pages/my-gifs.html";
+}
+
+
