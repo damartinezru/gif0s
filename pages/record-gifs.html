@@ -3,38 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./styles/style-mygifs.css" rel="stylesheet" />
+    <link href="../styles/style-home-light.css" rel="stylesheet" />
+    <link href="../styles/style-record-gifs.css" rel="stylesheet" /> 
     <title>Gif0s</title>
   </head>
-  <body>
+  <body onload="CheckStylesheet(true)">
     <header>
       <h6>
         ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número
         de visitas: 12.765.803
       </h6>
       <div class="general-margin">
-        <div class="images">
-          <a href="./index.html"><img src="./assets/arrow.svg"/></a>
-          <img src="./assets/gifOF_logo.png" />
+        <div>
+            <div class="images">
+                <a id="left-arrow" href="../index.html"><img src="../assets/arrow.svg"/></a>
+                <img id="logo" src="../assets/gifOF_logo.png" />  
+            </div>
+        </div>
+        <div id="initial-buttons" class="initial-buttons">
+          <div class="create-gif-button">
+            <button class="font button-one" onclick="OpenDialogMyGifs(this)">Crear Guifos</button>
+          </div> 
+          <div class="dropdown">
+            <div class="dropdown-buttons">
+              <button class="font button-one button-theme" onclick="OpenThemeDropdown()" > Elegir tema</button>
+              <button class="font button-one button-dropdown" onclick="OpenThemeDropdown()" >
+                <img src="../assets/dropdown.svg" />
+              </button> 
+            </div>
+            <div class="dropdown-content " id="dropdown-content">
+              <button onclick="SelectTheme(true)"><span class="letter-underline">S</span>ailor Day</button>
+              <button onclick="SelectTheme()"><span class="letter-underline">S</span>ailor Night</button>
+            </div> 
+          </div>
+            <div class="my-gifs-button">
+              <a class="font " href="my-gifs.html"><span class="letter-underline">M</span>is Guifos</a>
+            </div>
+          </div>
         </div>
       </div>
     </header>
-    <section class="dialog-record general-margin">
-      <div class="dialog-record-content">
-        <div>
-          <h4>Un chequeo antes de empezar</h4>
-          <img src="./assets/close.svg" />
+    <section id="dialog"class="dialog general-margin">
+      <div class="dialog-content">
+        <img src="../assets/window img.png" />
+        <h4 class="font-dialog">Aqu&iacute; podr&aacute;s crear tus propios guifos</h4>
+        <div class="paragraph font-dialog">
+          <p>
+            Crear tu <span>guifo</span> es muy f&aacute;cil, graba cualquier
+            imagen con tu c&aacute;mara y obt&eacute;n guifos personalizados.
+            Los pasos para crear tu guifo son:
+          </p>
+          <ul>
+            <li>
+              <span>1)</span> Dar permisos de acceso a la cam&aacute;ra
+              (s&oacute;lo por el tiempo de uso)
+            </li>
+            <li><span>2)</span> Capturar tu momento guifo</li>
+            <li><span>3)</span> Revisar el momento</li>
+            <li><span>4)</span> Listo para subir y compartir</li>
+          </ul>
+          <p>¿Quieres comenzar a crear tu <span>guifo</span> ahora?</p>
         </div>
-        <div class="record-button">
-          <button class="font button-theme button-one">
-            <img src="./assets/camera.svg" />
+        <div class="buttons">
+          <button class="font-dialog button-theme buttons-dialog">Cancelar</button>
+          <button
+            class="font-dialog button-theme buttons-dialog"
+            onclick="OpenCamera()"
+          >
+            Comenzar
           </button>
-          <button class="font button-theme button-one">Capturar</button>
         </div>
       </div>
     </section>
-    <script src="./js/logic.js"></script>
-    <script src="./js/record.js"></script>
+    <section id="my-section" class="my-section general-margin">
+      <input value="" class="input-box-gifs" type="text" disabled />
+      <div id="my-section-gifs"></div>
+    </section>
+    <section id="dialog-record" class="dialog-record general-margin">
+      <div class="dialog-record-content">
+        <div class="record-header record-header-style">
+          <h4>Un Chequeo Antes De Empezar</h4>
+          <img src="../assets/close.svg" />
+        </div>
+        <div class="record-video">
+          <video autoplay="true" id="video-element" ></video>
+          <img id="preview">
+        </div>
+        <div class="record-actions">
+          <!-- <div class="timer">
+            <input>
+          </div>
+          <div class="progress-bar">
+            <button></button>
+            <input>
+          </div> -->
+          <div class="record-buttons">
+            <button id="camera" class="font button-theme button-one capture-button ">
+              <img id="camera-icon" />
+            </button> 
+            <button id="capture" class="font button-theme button-one capture-button" onclick="StartRecording()">Capturar</button>
+          </div>
+          <!-- <div class="upload-buttons">
+            <button id="camera" class="font button-theme button-one capture-button ">
+              <img id="camera-icon" />
+            </button> 
+            <button id="capture" class="font button-theme button-one capture-button" onclick="StartRecording()">Capturar</button>
+          </div>
+          <div class="cancel-button">
+            <button></button>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <script src="../js/logic.js"></script>
+    <script src="../js/record.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.6/RecordRTC.js"></script>
   </body>
 </html>

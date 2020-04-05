@@ -2,20 +2,21 @@
 
 ///header
 %header-prefix {
-  background-image: $primary-background-gradient;
   color: $fourth-color;
   @extend %second-font-prefix;
   font-size: 12px;
   padding: 0.2% 0.5% 0.3% 0.5%;
   box-shadow: $header-boxshadow-prefix;
 }
+
+
 //gifs-header
 %gifs-header-prefix {
-  background-image: $primary-background-gradient;
   color: $fourth-color;
   @extend %second-font-prefix;
   font-size: 14px;
 }
+
 
 ///tag button
 %tag-button {
@@ -86,6 +87,12 @@
   box-shadow: $primary-boxshadow-prefix;
 }
 
+%button-dark-prefix {
+  background-color: $primary-dark-color;
+  border: $primary-border-prefix;
+  box-shadow: $primary-dark-boxshadow-prefix;
+}
+
 %search-box-style {
   background: $secondary-color;
   box-shadow: $secondary-boxshadow-prefix;
@@ -118,4 +125,4 @@
 %hover-focus-div {
   outline: 0.2px dotted $primary-color;
   outline-offset: -1px;
-}
+} 

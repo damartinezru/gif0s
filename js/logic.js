@@ -36,7 +36,7 @@ const resultElementsRequested = {
 
 const TrendFetch = async () => {
   const searchQuery = await fetch(
-    `${constants.trendGetUrl}?api_key=${constants.apiKey}&limit=${26}`,
+    `${constants.trendGetUrl}?api_key=${constants.apiKey}&limit=${12}`,
     {
       method: "GET"
     }
@@ -57,15 +57,15 @@ const SearchFetch = async (inputValue, limit) => {
 };
 
 ///
- 
+
 const FirstLoad = async () => {
+  CheckStylesheet();
   const searchResult = await TrendFetch();
   let suggestData = searchResult.data.slice(0, 4);
   searchResult.data.splice(0, 4);
   CreateGifs(suggestElementsRequested.suggestGifContainer, suggestData, false);
   CreateGifs(trendElementsRequested.trendGifContainer, searchResult.data, true);
 };
-
 
 const Search = async (buttonSelected, hasHash) => {
   resultElementsRequested.resultGifContainer.innerHTML = "";
@@ -88,7 +88,7 @@ const Search = async (buttonSelected, hasHash) => {
   }
   const response = await SearchFetch(
     searchBoxElementsRequested.searchInput.value,
-    25
+    8
   );
   CreateResultTags(response.data, resultElementsRequested.resultTags);
   CreateGifs(resultElementsRequested.resultGifContainer, response.data, true);
@@ -121,20 +121,18 @@ const CreateGifs = (block, data, noHeader) => {
       gifImage: document.createElement("img"),
       gifAnchor: document.createElement("a"),
       gifButton: document.createElement("button"),
-      gifFooter: document.createElement("h4")
+      gifFooter: document.createElement("div"),
+      gifFooterText: document.createElement("h4")
     };
+    base.gifContainer.setAttribute("class", "container");
     // gif image
     base.gifImage.setAttribute("src", gifObject.images.downsized_large.url);
     //
     AssignButtonValue(gifObject.title, base.gifButton);
+
     if (noHeader) {
       CreateCustomWidth(gifObject, base.gifContainer, i, data);
-      CreateFooterTags(
-        base.gifFooter,
-        gifObject.title,
-        base.gifContainer.style.gridColumn
-      );
-      base.gifContainer.append(base.gifFooter);
+      CreateFooterTags(base.gifFooter, base.gifFooterText, gifObject.title);
     } else {
       CreateHeaderTags(base.gifHeader, base.gifHeaderText, gifObject.title);
       CreateCloseButton(base.gifHeader, base.gifHeaderIcon, base.gifAnchor);
@@ -143,6 +141,9 @@ const CreateGifs = (block, data, noHeader) => {
     }
     // append
     base.gifContainer.append(base.gifImage);
+    if (noHeader) {
+      base.gifContainer.append(base.gifFooter);
+    }
     block.appendChild(base.gifContainer);
   });
 };
@@ -159,19 +160,22 @@ const CreateHeaderTags = (block, textBlock, title) => {
 
 const AssignButtonValue = (title, gifButton) => {
   gifButton.innerText = "Ver más...";
-  console.log(gifButton);
   gifButton.value = title;
   gifButton.setAttribute("onclick", "Search(this)");
 };
 
-const CreateFooterTags = (block, title, imageWidth) => {
+const CreateFooterTags = (block, textBlock, title) => {
   let gifTags = title.split(" ");
   gifTags.splice(gifTags.indexOf("GIF"), 1);
   gifTags.splice(gifTags.indexOf("by"), 1);
+  if (gifTags.length > 3) {
+    gifTags.splice(4);
+  }
   gifTags.map(tg => {
-    block.innerText = block.innerText.concat(`#${tg} `);
+    textBlock.innerText = textBlock.innerText.concat(`#${tg} `);
   });
-  block.style.width = `${imageWidth}px`;
+  block.setAttribute("class", "footerTag");
+  block.append(textBlock);
 };
 
 const CreateCloseButton = (block, iconBlock, anchorBlock) => {
@@ -252,22 +256,52 @@ const OpenThemeDropdown = () => {
 };
 
 const SelectTheme = isDay => {
-  let style = document.getElementsByTagName("link");
   if (isDay) {
-    style[0].href = "../styles/style-home-light.css";
+    ChangeTheme(true);
+    sessionStorage.setItem("theme", "light");
   } else {
-    style[0].href = "../styles/style-home-dark.css";
+    ChangeTheme();
+    sessionStorage.setItem("theme", "dark");
   }
 };
 
-const OpenDialogMyGifs = (button) => {
+const ChangeTheme = (isDay, isRecordPage) => {
+  let styleSheet = document.getElementsByTagName("link");
+  let logo = document.getElementById("logo");
+  let camera = document.getElementById("camera-icon");
+  if (isDay) {
+    styleSheet[0].href = "../styles/style-home-light.css";
+    logo.setAttribute("src", "../assets/gifOF_logo.png");
+    if (isRecordPage) {
+      camera.setAttribute("src", "../assets/camera.svg");
+    }
+    dropdownElementsRequested.dropdownContent.style.display = "none";
+  } else {
+    styleSheet[0].href = "../styles/style-home-dark.css";
+    logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
+    if (isRecordPage) {
+      camera.setAttribute("src", "../assets/camera_light.svg");
+    }
+    dropdownElementsRequested.dropdownContent.style.display = "none";
+  }
+};
+
+const OpenDialogMyGifs = button => {
   let buttonsDropdown = dropdownElementsRequested.dropdownButtons[0].getElementsByTagName(
     "button"
   );
   buttonsDropdown[0].classList.remove("button-selected");
   buttonsDropdown[1].classList.remove("button-selected");
   button.classList.add("button-selected");
-  window.location = "../pages/my-gifs.html";
-}
 
+  window.location = "../pages/record-gifs.html";
+};
 
+const CheckStylesheet = isRecordPage => {
+  let theme = sessionStorage.getItem("theme");
+  if (theme === "light") {
+    ChangeTheme(true,isRecordPage);
+  } else {
+    ChangeTheme(false,isRecordPage);
+  }
+};

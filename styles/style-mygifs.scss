@@ -1,62 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
-@import "./constants.scss";
-@import "./clases-comunes.scss";
+@import "../styles/constants.scss";
+@import "../styles/common-classes.scss";
 
-
-.buttons-dialog {
-  border: $primary-border-prefix;
-  box-shadow: $primary-boxshadow-prefix;
-  padding: 0.8% 2.7% 0.8% 2.5%;
-}
-
-.dialog {
-  padding: 2% 17% 2% 17%;
-  .dialog-content {
-    @extend %search-box-style;
-    padding: 5% 5% 5% 5%;
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: 5% 80% 15%;
-    row-gap: 5%;
-    h4 {
-      text-align: start;
-      font-weight: bold;
-    }
-    .paragraph {
-      display: flex;
-      flex-flow: column;
-      grid-area: 2/2/2/2;
-      justify-self: flex-start;
-      text-align: start;
-      li {
-        margin-top: 2%;
-        span {
-          font-weight: bolder;
-          font-style: italic;
-        }
-      }
-      p {
-        margin-top: 2%;
-      }
-    }
-    .buttons {
-      grid-area: 3/2/3/2;
-      justify-self: flex-end;
-      align-items: baseline;
-    }
-  }
-}
-
-ul li {
-  list-style-type: none;
-  color: $primary-color;
-  @extend %font-prefix;
-  font-size: 14px;
-  line-height: 20px;
-  span {
-    @extend %second-font-prefix;
-  }
-}
 
 .my-section{
     input{

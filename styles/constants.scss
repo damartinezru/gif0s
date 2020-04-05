@@ -1,6 +1,7 @@
 
 //Gradients
 $primary-background-gradient:  linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+$primary-dark-background-gradient :linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 
 //Fonts
 $primary-font: 'Chakra Petch'; 
@@ -18,6 +19,11 @@ $ninth-color: #E6E6E6;
 $tenth-color:#4180F6; 
 $eleventh-color:#AC9EB8;
 
+///
+$primary-dark-color: #EE3EFE;
+$secondary-dark-color:#2E32FB;
+
+
 //Border-prefix
 $primary-border-prefix: 1px solid #110038;
 $secondary-border-prefix: 1px solid #979797;
@@ -25,6 +31,10 @@ $thrid-border-prefix: 1px solid #808080;
 $fourth-border-prefix: 1px solid #CCA6C9;
 $fifth-border-prefix: 1px solid #E6BBE2;
 $sixth-border-prefix: 1px solid #4C2F99;
+
+//
+$primary-dark-border-prefix:1px solid #323291;
+$secondary-dark-border-prefix: 1px solid #4C2F99;
 
 //Box-shadow-prefix
 $header-boxshadow-prefix: 0 1px 0 0 #110038;
@@ -35,6 +45,9 @@ $fourth-boxshadow-prefix: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF
 $fifth-boxshadow-prefix:  inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 $sixth-boxshadow-prefix:  inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
 $seventh-boxshadow-prefix: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+
+$primary-dark-boxshadow-prefix:  inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+$secondary-dark-boxshadow-prefix:  inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
 
 //filter
 $filter:brightness(0.9);

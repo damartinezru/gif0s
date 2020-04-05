@@ -2,9 +2,9 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "clases-comunes.scss",
+        "common-classes.scss",
         "constants.scss"
     ],
     "names": [],
-    "file": "clases-comunes.css"
+    "file": "common-classes.css"
 }

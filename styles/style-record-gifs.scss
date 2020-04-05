@@ -1,32 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
-@import "./constants.scss";
-@import "./clases-comunes.scss";
+@import "../styles/constants.scss";
+@import "../styles/common-classes.scss";
 
-///crear clase comun con todo esto
-* {
-  margin: 0%;
-  padding: 0%;
-}
-.general-margin {
-  margin-right: 7.5%;
-  margin-left: 7.5%;
-}
 
-.input-box-gifs {
-  @extend %input-box-gifs-style;
-}
+.buttons-dialog {
+  border: $primary-border-prefix;
+  box-shadow: $primary-boxshadow-prefix;
+  padding: 0.8% 2.7% 0.8% 2.5%;
+} 
 
-.font {
-  color: $primary-color;
-  @extend %font-prefix;
-  @extend %first-font-measure;
-  text-align: center;
+.video-style {
+    @extend %input-box-style;
 }
-
-.button-one {
-  @extend %button-prefix;
-}
-
 
 .dialog {
   padding: 2% 17% 2% 17%;
@@ -66,113 +51,59 @@
   }
 }
 
-ul li {
-  list-style-type: none;
-  color: $primary-color;
-  @extend %font-prefix;
-  font-size: 14px;
-  line-height: 20px;
-  span {
-    @extend %second-font-prefix;
-  }
-}
-
-header {
-  h6 {
-    @extend %header-prefix;
-  }
-  div {
-    margin-bottom: 1%;
-    margin-top: 2%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .images {
-        width: 11%;
-    }
-    .initial-buttons {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 40%;
-      .create-gif-button {
-        width: 35%;
-        button {
-          width: 100%;
-          padding-top: 5%;
-          padding-bottom: 5%;
-          &:focus {
-            @extend %active-focus-button-style;
-            filter: $filter;
-          }
-        }
-      }
-      .dropdown {
-        width: 35%;
-        display: flex;
-        flex-flow: column wrap;
-        position: relative;
-
-        .dropdown-buttons {
-          width: 100%;
-          margin: 0%;
-          z-index: 2;
-          .button-theme {
-            width: 80%;
-            padding-top: 5%;
-            padding-bottom: 5%;
-          }
-          .button-dropdown {
-            width: 20%;
-            padding-top: 5%;
-            padding-bottom: 5%;
-          }
-        }
-
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          z-index: 1;
-          padding-top: 2.5em;
-          padding-bottom: 1em;
-          width: 99%;
-          flex-flow: column nowrap;
-          background: $secondary-color;
-          box-shadow: $fourth-boxshadow-prefix;
-          button {
-            padding-left: 1em;
-            width: 80%;
-            padding-top: 0.4em;
-            padding-bottom: 0.4em;
-            margin-top: 0.5em;
-            background: $seventh-color;
-            border: $fourth-border-prefix;
-            box-shadow: $fifth-boxshadow-prefix;
-            @extend %common-font-color;
-            text-align: left;
-          }
-        }
-      }
-
-      .my-gifs-button {
-        text-align: center;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        border: 1px solid transparent;
-        border-style: dotted;
-        &:hover {
-          border-color: #110038;
-        }
-      }
-    }
-  }
-}
-
-///
-
 .my-section{
-    input{
-        width: 100%;
-        padding: 0.3em 0em 0.3em 0.5em;
+  input{
+      width: 100%;
+      padding: 0.3em 0em 0.3em 0.5em;
+  }
+}
+
+.dialog-record {
+  padding: 2% 18% 2% 18%;
+  display: none;
+  .dialog-record-content {
+    @extend %search-box-style;
+    height: 30em;
+    padding: 0.5%;
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 5% 75% 5%; 
+    row-gap: 2%;
+    .record-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 1.5em;
+      padding: 0% 0.5% 0% 0.3%; 
+      h4 {
+        color: $fourth-color;
+        @extend %second-font-prefix;
+        font-size: 14px;
+      }
     }
+    .record-video {
+      @extend %input-box-style;
+      width: 97%;
+      margin-right: 5%;
+      margin-left: 0.5%;
+      video {
+        margin-top: 0.4%;
+        margin-left: 0.4%;
+        width: 99.2%;
+      }
+    }
+    .record-actions {
+      justify-self: flex-end; 
+      padding-right: 1em;
+      .record-buttons{
+        display: flex;
+        .capture-button {
+          padding: 0.5em;
+        }
+        #preview {
+          display: none;
+        }
+      }
+    }
+  }
 }

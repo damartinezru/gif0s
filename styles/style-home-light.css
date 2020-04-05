@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
 header h6 {
-  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
-  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
   color: #FFFFFF;
   font-size: 12px;
   padding: 0.2% 0.5% 0.3% 0.5%;
@@ -9,9 +7,7 @@ header h6 {
           box-shadow: 0 1px 0 0 #110038;
 }
 
-.suggest #suggest-gifs div span, .trends #trends-gifs div h4, .results #result-gifs div h4 {
-  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
-  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+.container .footerTag h4, .suggest #suggest-gifs div span {
   color: #FFFFFF;
   font-size: 14px;
 }
@@ -26,13 +22,13 @@ header h6 {
   line-height: 18px;
 }
 
-.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search div input:focus + button, .search div button:focus, .suggest input, .trends input, .results input, .font, .search div input, .search div button, .search .search-suggest input {
+.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search .body-search input:focus + button, .search .body-search button:focus, .suggest input, .trends input, .results input, .font, .font-dialog, .search .body-search input, .search .body-search button, .search .search-suggest input {
   font-family: "Chakra Petch";
   font-weight: 400;
   letter-spacing: 0;
 }
 
-header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .results #result-gifs div h4, .search {
+header h6, .container .footerTag h4, .suggest #suggest-gifs div span, .search {
   font-family: "Chakra Petch";
   font-weight: 600;
   letter-spacing: 0;
@@ -44,12 +40,12 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
   letter-spacing: 0;
 }
 
-.font, .search div button {
+.font, .font-dialog, .search .body-search button {
   font-size: 16px;
   line-height: 18px;
 }
 
-.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search div input:focus + button, .search div button:focus, .search div input, .search .search-suggest input {
+.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search .body-search input:focus + button, .search .body-search button:focus, .search .body-search input, .search .search-suggest input {
   font-size: 16px;
   line-height: 22px;
 }
@@ -59,7 +55,7 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
   line-height: 22px;
 }
 
-.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search div input:focus + button, .search div button:focus {
+.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search .body-search input:focus + button, .search .body-search button:focus {
   color: #110038;
 }
 
@@ -67,7 +63,7 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
   color: #110038;
 }
 
-.button-one, .button-active, .search div button, .search div input:focus + button, .search div button:focus {
+.button-one, .button-active, .search .body-search button, .search .body-search input:focus + button, .search .body-search button:focus {
   background-color: #F7C9F3;
   border: 1px solid #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
@@ -80,7 +76,7 @@ header h6, .suggest #suggest-gifs div span, .trends #trends-gifs div h4, .result
           box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.search div input {
+.search .body-search input {
   background: #FFFFFF;
   border: 1px solid #979797;
   -webkit-box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
@@ -101,12 +97,12 @@ header div .initial-buttons .dropdown .dropdown-content button:hover, .search .s
           box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
 }
 
-.button-selected, header div .initial-buttons .create-gif-button button:hover, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-theme, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-dropdown, .search div button:focus, .suggest #suggest-gifs div:hover button {
+.button-selected, header div .initial-buttons .create-gif-button button:hover, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-theme, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-dropdown, .search .body-search button:focus, .suggest #suggest-gifs div:hover button {
   outline: 0.2px dotted #110038;
   outline-offset: -5px;
 }
 
-.search .search-suggest input:focus, .search .search-suggest input:hover, .suggest #suggest-gifs div:hover img, .trends #trends-gifs div:hover img, .results #result-gifs div:hover img {
+.container:hover img, .search .search-suggest input:focus, .search .search-suggest input:hover, .suggest #suggest-gifs div:hover img {
   outline: 0.2px dotted #110038;
   outline-offset: -1px;
 }
@@ -117,6 +113,11 @@ header div .initial-buttons .dropdown .dropdown-content button:hover, .search .s
 }
 
 .font {
+  color: #110038;
+  text-align: center;
+}
+
+.font-dialog {
   color: #110038;
   text-align: center;
 }
@@ -144,6 +145,55 @@ header div .initial-buttons .dropdown .dropdown-content button:hover, .search .s
   color: #AC9EB8;
 }
 
+.camera {
+  background-image: url("../assets/camera.svg");
+}
+
+.container {
+  height: 315px;
+  padding: 0 0.1em 0 0.1em;
+}
+
+.container img {
+  width: 99%;
+  height: 310px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.container .footerTag {
+  display: none;
+  width: 100%;
+  -webkit-transform: translateY(-1.45em);
+          transform: translateY(-1.45em);
+}
+
+.container .footerTag h4 {
+  width: 98.5%;
+  z-index: 1;
+  position: absolute;
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
+.container:hover {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.container:hover .footerTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header h6 {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
 header div {
   margin-bottom: 1%;
   margin-top: 2%;
@@ -158,8 +208,8 @@ header div {
           justify-content: space-between;
 }
 
-header div .images {
-  width: 11%;
+header div .images img {
+  margin-left: 2%;
 }
 
 header div .initial-buttons {
@@ -285,13 +335,17 @@ header div .initial-buttons .my-gifs-button:hover {
   position: relative;
 }
 
-.search h3 {
-  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
-  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
-  margin: 0% 0.5% 0% 0.3%;
+.search .head-search {
+  padding: 0.2em;
 }
 
-.search div {
+.search .head-search h3 {
+  width: 100%;
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
+.search .body-search {
   padding: 1% 1.5% 1% 1.5%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -299,12 +353,12 @@ header div .initial-buttons .my-gifs-button:hover {
   z-index: 1;
 }
 
-.search div input {
+.search .body-search input {
   width: 88%;
   padding: 1.1% 1.1% 1.1% 1.1%;
 }
 
-.search div button {
+.search .body-search button {
   color: #B4B4B4;
   background: #E6E6E6;
   border: 1px solid #979797;
@@ -314,15 +368,15 @@ header div .initial-buttons .my-gifs-button:hover {
   margin: 0.5% 0% 0.5% 0.5%;
 }
 
-.search div button span {
+.search .body-search button span {
   padding-left: 8%;
 }
 
-.search div input:focus + button img {
+.search .body-search input:focus + button img {
   content: url("../assets/lupa.svg");
 }
 
-.search div button:focus img {
+.search .body-search button:focus img {
   content: url("../assets/lupa.svg");
 }
 
@@ -333,12 +387,13 @@ header div .initial-buttons .my-gifs-button:hover {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  width: 97%;
+  width: 100%;
 }
 
 .search .search-suggest input {
   text-align: start;
-  width: 89.5%;
+  margin-left: 1.1em;
+  width: 87%;
   margin-bottom: 1%;
   padding-top: 0.1em;
   border: 1px solid #979797;
@@ -406,6 +461,8 @@ header div .initial-buttons .my-gifs-button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
 }
 
 .suggest #suggest-gifs div span h4 {
@@ -461,40 +518,6 @@ header div .initial-buttons .my-gifs-button:hover {
   grid-gap: 1.3%;
 }
 
-.trends #trends-gifs div {
-  height: 315px;
-  position: relative;
-  width: 100%;
-  padding: 0 0.1em 0 0.1em;
-}
-
-.trends #trends-gifs div img {
-  width: 99%;
-  height: 310px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-.trends #trends-gifs div h4 {
-  display: none;
-  z-index: 1;
-  position: absolute;
-  -webkit-transform: translateY(20.3em);
-          transform: translateY(20.3em);
-  padding: 0.2em 0 0.3em 0;
-}
-
-.trends #trends-gifs div:hover {
-  background: #E6E6E6;
-  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-}
-
-.trends #trends-gifs div:hover h4 {
-  display: inline;
-}
-
 .results {
   display: none;
   margin-top: 4%;
@@ -517,38 +540,8 @@ header div .initial-buttons .my-gifs-button:hover {
   grid-gap: 1.3%;
 }
 
-.results #result-gifs div {
-  height: 320px;
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  width: 100%;
-}
-
-.results #result-gifs div img {
-  width: 99%;
-  height: 310px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-.results #result-gifs div h4 {
-  display: none;
-  z-index: 1;
-  position: absolute;
-  -webkit-transform: translateY(20.3em);
-          transform: translateY(20.3em);
-  padding: 0.2em 0 0.3em 0;
-}
-
-.results #result-gifs div:hover {
-  background: #E6E6E6;
-  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-}
-
-.results #result-gifs div:hover h4 {
-  display: inline;
+.record-header-style {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
 }
 /*# sourceMappingURL=style-home-light.css.map */

@@ -1,11 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
 header h6 {
-  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
-  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
   color: #FFFFFF;
   font-size: 12px;
   padding: 0.2% 0.5% 0.3% 0.5%;
   -webkit-box-shadow: 0 1px 0 0 #110038;
           box-shadow: 0 1px 0 0 #110038;
+}
+
+.container .footerTag h4, .suggest #suggest-gifs div span {
+  color: #FFFFFF;
+  font-size: 14px;
 }
 
 .tag-button {
@@ -18,31 +22,36 @@ header h6 {
   line-height: 18px;
 }
 
-.button-active, header div .initial-buttons .dropdown .dropdown-content button, .font {
+.button-active, header div .initial-buttons .dropdown .dropdown-content button, .suggest input, .trends input, .results input, .font, .font-dialog, .search .body-search input, .search .body-search button, .search .body-search input:focus + button, .search .body-search button:focus, .search .search-suggest input {
   font-family: "Chakra Petch";
   font-weight: 400;
   letter-spacing: 0;
 }
 
-header h6 {
+header h6, .container .footerTag h4, .suggest #suggest-gifs div span, .search {
   font-family: "Chakra Petch";
   font-weight: 600;
   letter-spacing: 0;
 }
 
-.tag-button {
+.tag-button, .suggest #suggest-gifs div button {
   font-family: "Chakra Petch";
   font-weight: 300;
   letter-spacing: 0;
 }
 
-.font {
+.font, .font-dialog, .search .body-search button {
   font-size: 16px;
   line-height: 18px;
 }
 
-.button-active, header div .initial-buttons .dropdown .dropdown-content button {
+.button-active, header div .initial-buttons .dropdown .dropdown-content button, .search .body-search input, .search .body-search input:focus + button, .search .body-search button:focus, .search .search-suggest input {
   font-size: 16px;
+  line-height: 22px;
+}
+
+.suggest input, .trends input, .results input {
+  font-size: 14px;
   line-height: 22px;
 }
 
@@ -50,11 +59,42 @@ header h6 {
   color: #110038;
 }
 
-.button-one, .button-active {
+.suggest input, .trends input, .results input {
+  color: #110038;
+}
+
+.search .body-search button {
   background-color: #F7C9F3;
   border: 1px solid #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.button-one, .button-active, .search .body-search input:focus + button, .search .body-search button:focus {
+  background-color: #EE3EFE;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.search, .search .search-suggest {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.search .body-search input {
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+          box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+}
+
+.search .search-suggest input {
+  background: #F0F0F0;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  color: #110038;
 }
 
 .input-box-gifs {
@@ -64,18 +104,31 @@ header h6 {
           box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
 }
 
-.button-selected, header div .initial-buttons .create-gif-button button:focus {
+.button-selected, header div .initial-buttons .create-gif-button button:hover, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-theme, header div .initial-buttons .dropdown .dropdown-buttons:hover .button-dropdown, .search .body-search button:focus, .suggest #suggest-gifs div:hover button {
   outline: 0.2px dotted #110038;
   outline-offset: -5px;
 }
 
-* {
+.container:hover img, .search .search-suggest input:focus, .search .search-suggest input:hover, .suggest #suggest-gifs div:hover img {
+  outline: 0.2px dotted #110038;
+  outline-offset: -1px;
+}
+
+body {
   background-color: #110038;
+}
+
+* {
   margin: 0%;
   padding: 0%;
 }
 
 .font {
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.font-dialog {
   color: #110038;
   text-align: center;
 }
@@ -99,8 +152,58 @@ header h6 {
   padding: 0.8em;
 }
 
+.container {
+  height: 315px;
+  padding: 0 0.1em 0 0.1em;
+}
+
+.container img {
+  width: 99%;
+  height: 310px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.container .footerTag {
+  display: none;
+  width: 100%;
+  -webkit-transform: translateY(-1.45em);
+          transform: translateY(-1.45em);
+}
+
+.container .footerTag h4 {
+  width: 98.5%;
+  z-index: 1;
+  position: absolute;
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
 .disabled {
   color: #AC9EB8;
+}
+
+.container:hover {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.container:hover .footerTag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.record-header-style {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+header h6 {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
 header div {
@@ -117,8 +220,8 @@ header div {
           justify-content: space-between;
 }
 
-header div .images {
-  width: 11%;
+header div .images img {
+  margin-left: 2%;
 }
 
 header div .initial-buttons {
@@ -144,7 +247,7 @@ header div .initial-buttons .create-gif-button button {
   padding-bottom: 5%;
 }
 
-header div .initial-buttons .create-gif-button button:focus {
+header div .initial-buttons .create-gif-button button:hover {
   -webkit-filter: brightness(0.9);
           filter: brightness(0.9);
 }
@@ -179,6 +282,16 @@ header div .initial-buttons .dropdown .dropdown-buttons .button-dropdown {
   padding-bottom: 5%;
 }
 
+header div .initial-buttons .dropdown .dropdown-buttons:hover .button-theme {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+header div .initial-buttons .dropdown .dropdown-buttons:hover .button-dropdown {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
 header div .initial-buttons .dropdown .dropdown-content {
   display: none;
   position: absolute;
@@ -208,6 +321,14 @@ header div .initial-buttons .dropdown .dropdown-content button {
   text-align: left;
 }
 
+header div .initial-buttons .dropdown .dropdown-content button:hover {
+  background-color: #2E32FB;
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+  border: 1px solid #323291;
+  color: #FFFFFF;
+}
+
 header div .initial-buttons .my-gifs-button {
   text-align: center;
   padding-top: 0.5em;
@@ -221,6 +342,225 @@ header div .initial-buttons .my-gifs-button a {
 }
 
 header div .initial-buttons .my-gifs-button:hover {
-  border-color: #110038;
+  border-color: #FFFFFF;
+}
+
+.search {
+  color: #FFFFFF;
+  font-size: 12px;
+  position: relative;
+}
+
+.search .head-search {
+  padding: 0.2em;
+}
+
+.search .head-search h3 {
+  width: 100%;
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.search .body-search {
+  padding: 1% 2% 1% 1.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1;
+}
+
+.search .body-search input {
+  width: 88%;
+  padding: 1.1% 1.1% 1.1% 1.1%;
+}
+
+.search .body-search button {
+  color: #B4B4B4;
+  background: #E6E6E6;
+  border: 1px solid #979797;
+  -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  width: 10%;
+  margin: 0.5% 0% 0.5% 0.5%;
+}
+
+.search .body-search button span {
+  padding-left: 8%;
+}
+
+.search .body-search input:focus + button {
+  color: #FFFFFF;
+}
+
+.search .body-search input:focus + button img {
+  content: url("../assets/lupa_light.svg");
+}
+
+.search .body-search button:focus {
+  color: #FFFFFF;
+}
+
+.search .body-search button:focus img {
+  content: url("../assets/lupa_light.svg");
+}
+
+.search .search-suggest {
+  position: absolute;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  width: 100%;
+}
+
+.search .search-suggest input {
+  text-align: start;
+  margin-left: 1.1em;
+  width: 86.5%;
+  margin-bottom: 1%;
+  padding-top: 0.1em;
+  border: 1px solid #979797;
+}
+
+.search .search-suggest input:hover {
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+.suggest {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+.suggest input {
+  width: 99.1%;
+  padding: 0.3em 0em 0.3em 0.5em;
+}
+
+.suggest #suggest-gifs {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (24%)[4];
+      grid-template-columns: repeat(4, 24%);
+  -ms-grid-rows: 1;
+      grid-template-rows: 1;
+  margin-top: 2%;
+  grid-gap: 1.3%;
+}
+
+.suggest #suggest-gifs div {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  grid-column: span 1;
+  height: 290px;
+  padding: 1.5%;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.suggest #suggest-gifs div img {
+  width: 100%;
+  height: 265px;
+}
+
+.suggest #suggest-gifs div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 25px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.suggest #suggest-gifs div span h4 {
+  padding-left: 2%;
+}
+
+.suggest #suggest-gifs div span img {
+  width: 16px;
+  height: 14px;
+  justify-self: flex-end;
+}
+
+.suggest #suggest-gifs div button {
+  position: absolute;
+  z-index: 1;
+  -webkit-transform: translate(1em, 18em);
+          transform: translate(1em, 18em);
+  -webkit-box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
+  border: 1px solid #4C2F99;
+  background: #2E32FB;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 2% 5% 2% 5%;
+}
+
+.tags {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.trends {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+.trends input {
+  width: 99.1%;
+  padding: 0.3em 0em 0.3em 0.5em;
+}
+
+.trends #trends-gifs {
+  margin-top: 2%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: minmax(250px, auto);
+  grid-auto-flow: dense;
+  margin-top: 2%;
+  grid-gap: 1.3%;
+}
+
+.results {
+  display: none;
+  margin-top: 4%;
+}
+
+.results input {
+  width: 99.1%;
+  padding: 0.3em 0em 0.3em 0.5em;
+}
+
+.results #result-gifs {
+  margin-top: 2%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: minmax(250px, auto);
+  grid-auto-flow: dense;
+  margin-top: 2%;
+  grid-gap: 1.3%;
 }
 /*# sourceMappingURL=style-home-dark.css.map */

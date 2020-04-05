@@ -1,12 +1,23 @@
-@import "./constants.scss";
-@import "./clases-comunes.scss";
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:300,400,600&display=swap");
+@import "../styles/constants.scss";
+@import "../styles/common-classes.scss";
 
-* {
+body {
   background-color: $primary-color;
+
+}
+* {
   margin: 0%;
   padding: 0%;
 }
 .font {
+  color: $fourth-color;
+  @extend %font-prefix;
+  @extend %first-font-measure;
+  text-align: center;
+}
+
+.font-dialog { 
   color: $primary-color;
   @extend %font-prefix;
   @extend %first-font-measure;
@@ -14,11 +25,11 @@
 }
 
 .button-one {
-  @extend %button-prefix;
+  @extend %button-dark-prefix;
 }
 .button-active {
   @extend %common-font-color;
-  @extend %button-prefix;
+  @extend %button-dark-prefix;
 }
 .button-selected {
   @extend %active-focus-button-style;
@@ -41,11 +52,53 @@
   padding: 0.8em;
 }
 
+.container {
+  height: 315px;
+  padding: 0 0.1em 0 0.1em;
+  img {
+    width: 99%;
+    height: 310px;
+    align-self: center;
+  }
+  .footerTag {
+    display: none;
+    width: 100%;
+    transform: translateY(-1.45em);
+    h4 {
+      width: 98.5%;
+      z-index: 1;
+      position: absolute;
+      @extend %gifs-header-prefix;
+      background-image: $primary-dark-background-gradient;
+    }
+  }
+}
+
+.disabled {
+  color: $eleventh-color;
+}
+ 
+.container:hover {
+  background: $ninth-color;
+  box-shadow: $secondary-boxshadow-prefix;
+  img {
+    @extend %hover-focus-div;
+  }
+  .footerTag {
+    display: flex;
+  }
+}
+
+.record-header-style {
+  background-image: $primary-dark-background-gradient;
+}
+
 
 header {
   h6 {
     @extend %header-prefix;
-  }
+    background-image: $primary-dark-background-gradient;
+    }
   div {
     margin-bottom: 1%;
     margin-top: 2%;
@@ -53,7 +106,9 @@ header {
     align-items: center;
     justify-content: space-between;
     .images {
-      width: 11%;
+      img {
+        margin-left: 2%;
+      }
     }
     .initial-buttons {
       display: flex;
@@ -66,9 +121,9 @@ header {
           width: 100%;
           padding-top: 5%;
           padding-bottom: 5%;
-          &:focus {
+          &:hover { 
             @extend %active-focus-button-style;
-            filter: $filter;
+            filter: $filter; 
           }
         }
       }
@@ -93,7 +148,16 @@ header {
             padding-bottom: 5%;
           }
         }
-
+        .dropdown-buttons:hover{
+          .button-theme{
+            @extend %active-focus-button-style;
+            filter: $filter;
+          }
+          .button-dropdown {
+            @extend %active-focus-button-style;
+            filter: $filter;
+          }
+        }
         .dropdown-content {
           display: none;
           position: absolute;
@@ -116,8 +180,15 @@ header {
             @extend %common-font-color;
             text-align: left;
           }
+          button:hover {
+            background-color: $secondary-dark-color;
+            box-shadow: $fifth-boxshadow-prefix;
+            border:$primary-dark-border-prefix;
+            color:$fourth-color;
+          }
         }
       }
+
 
       .my-gifs-button {
         text-align: center;
@@ -129,9 +200,220 @@ header {
           text-decoration: none;
         }
         &:hover {
-          border-color: $primary-color;
+          border-color: $fourth-color;
         }
       }
     }
   }
 }
+
+.search {
+  color: $fourth-color;
+  @extend %second-font-prefix;
+  font-size: 12px;
+  @extend %search-box-style;
+  position: relative;
+  .head-search{
+    padding: 0.2em;
+    h3 {
+      width: 100%;
+      background-image: $primary-dark-background-gradient;
+    }
+  }
+
+  .body-search {
+    padding: 1% 2% 1% 1.5%;
+    display: flex;
+    z-index: 1;
+    input {
+      width: 88%;
+      padding: 1.1% 1.1% 1.1% 1.1%;
+      @extend %input-box-style;
+      @extend %font-prefix;
+      @extend %second-font-measure;
+    }
+
+    button {
+      color: $third-color;
+      @extend %font-prefix;
+      @extend %first-font-measure;
+      background: $secondary-color;
+      border: $secondary-border-prefix;
+      box-shadow: $fourth-boxshadow-prefix;
+      width: 10%;
+      margin: 0.5% 0% 0.5% 0.5%;
+      @extend %button-prefix;
+      span {
+        padding-left: 8%;
+      }
+    }
+
+    input:focus + button {
+      @extend %button-dark-prefix;
+      @extend %font-prefix;
+      color: $fourth-color;
+      @extend %second-font-measure;
+      img {
+        content: url("../assets/lupa_light.svg");
+      }
+    } 
+
+
+    button:focus {
+      @extend %active-focus-button-style;
+      @extend %button-dark-prefix;
+      @extend %font-prefix;
+      color: $fourth-color;
+      @extend %second-font-measure;
+      img {
+        content: url("../assets/lupa_light.svg");
+      }
+    }
+  }
+
+  .search-suggest {
+    position: absolute;
+    display: none;
+    flex-flow: column nowrap;
+    width: 100%;
+    @extend %search-box-style;
+    input {
+      text-align: start;
+      margin-left: 1.1em;
+      width: 86.5%;
+      margin-bottom: 1%;
+      padding-top: 0.1em;
+      @extend %options-search-style;
+      border: $secondary-border-prefix;
+      @extend %font-prefix;
+      @extend %second-font-measure;
+    }
+    input:focus {
+      @extend %hover-focus-div;
+
+    }
+    input:hover {
+      @extend %hover-focus-div;
+      filter: $filter;
+    }
+  }
+}
+
+
+.suggest {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  input {
+    width: 99.1%;
+    padding: 0.3em 0em 0.3em 0.5em;
+    @extend %second-common-font-color;
+  }
+  #suggest-gifs {
+    display: grid;
+    grid-template-columns: repeat(4, 24%);
+    grid-template-rows: 1;
+    margin-top: 2%;
+    grid-gap: 1.3%;
+    div {
+      background: $ninth-color;
+      box-shadow: $secondary-boxshadow-prefix;
+      grid-column: span 1;
+      height: 290px;
+      padding: 1.5%;
+      position: relative;
+      display: grid;
+      flex-flow: row wrap;
+      img {
+        width: 100%;
+        height: 265px;
+      }
+
+      span {
+        display: flex;
+        height: 25px;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        @extend %gifs-header-prefix;
+        background-image: $primary-dark-background-gradient; 
+        h4 {
+          padding-left: 2%;
+        }
+        img {
+          width: 16px;
+          height: 14px;
+          justify-self: flex-end;
+        }
+      }
+      button {
+        position: absolute;
+        z-index: 1;
+        transform: translate(1em, 18em);
+        box-shadow: $secondary-dark-boxshadow-prefix;
+        border: $secondary-dark-border-prefix;
+        background: $secondary-dark-color;
+        color: $fourth-color;
+        @extend %third-font-prefix;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 2% 5% 2% 5%;
+      }
+
+    }
+    div:hover {
+      img{
+        @extend %hover-focus-div;
+      }
+      button{
+        @extend %active-focus-button-style;
+      }
+
+    }
+  }
+}
+
+.tags {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+.trends {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  input {
+    width: 99.1%;
+    padding: 0.3em 0em 0.3em 0.5em;
+    @extend %second-common-font-color;
+  }
+  #trends-gifs {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: minmax(250px, auto);
+    grid-auto-flow: dense;
+    margin-top: 2%;
+    grid-gap: 1.3%; 
+
+  }
+}
+
+.results {
+  display: none;
+  margin-top: 4%;
+  input {
+    width: 99.1%;
+    padding: 0.3em 0em 0.3em 0.5em;
+    @extend %second-common-font-color;
+  }
+  #result-gifs {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: minmax(250px, auto);
+    grid-auto-flow: dense;
+    margin-top: 2%;
+    grid-gap: 1.3%;
+
+  }
+}
+
