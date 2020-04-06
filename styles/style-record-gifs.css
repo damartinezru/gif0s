@@ -5,13 +5,13 @@
   letter-spacing: 0;
 }
 
-.dialog .dialog-content, .dialog-record .dialog-record-content {
+.dialog .dialog-content, .dialog-record .dialog-result, .dialog-record .dialog-record-content {
   background: #E6E6E6;
   -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
           box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.video-style, .dialog-record .dialog-record-content .record-video {
+.video-style, .dialog-record .dialog-record-content .record-video, .dialog-record .dialog-record-content .record-actions .timer input {
   background: #FFFFFF;
   border: 1px solid #979797;
   -webkit-box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
@@ -23,6 +23,32 @@
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   padding: 0.8% 2.7% 0.8% 2.5%;
+}
+
+.able {
+  display: block;
+}
+
+.icon-button {
+  padding: 0 0.5em 0 0.5em;
+}
+
+.capture-button {
+  text-align: center;
+  padding: 0 2.5em 0 2.5em;
+}
+
+.upload-button {
+  text-align: center;
+  padding: 0 2.5em 0 2.5em;
+}
+
+.recording-style {
+  background-color: #FF6161;
+  color: #FFFFFF;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
 }
 
 .dialog {
@@ -89,19 +115,29 @@
 }
 
 .dialog-record {
-  padding: 2% 18% 2% 18%;
+  padding: 2% 15% 2% 15%;
   display: none;
 }
 
+.dialog-record .dialog-result {
+  display: none;
+  height: 20em;
+  padding: 0.5%;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: 100% 100%;
+      grid-template-rows: 100% 100%;
+}
+
 .dialog-record .dialog-record-content {
-  height: 30em;
+  height: 33.8em;
   padding: 0.5%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1;
       grid-template-columns: 1;
-  -ms-grid-rows: 5% 75% 5%;
-      grid-template-rows: 5% 75% 5%;
+  -ms-grid-rows: 5% 75% 7%;
+      grid-template-rows: 5% 75% 7%;
   row-gap: 2%;
 }
 
@@ -128,17 +164,93 @@
   width: 97%;
   margin-right: 5%;
   margin-left: 0.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.dialog-record .dialog-record-content .record-video video {
-  margin-top: 0.4%;
+.dialog-record .dialog-record-content .record-video .video {
   margin-left: 0.4%;
-  width: 99.2%;
+  margin-right: 0.4%;
+  width: 99.5%;
+}
+
+.dialog-record .dialog-record-content .record-video #preview {
+  display: none;
+  margin-top: 0.4%;
+  margin-bottom: 0.4%;
+  margin-left: 0.4%;
+  margin-right: 0.4%;
+  width: 99.5%;
+}
+
+.dialog-record .dialog-record-content .record-video .loading {
+  display: none;
+  margin-top: 15%;
+  margin-left: 30%;
+  margin-bottom: 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.dialog-record .dialog-record-content .record-video .loading .loading-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.dialog-record .dialog-record-content .record-video .loading .loading-image img {
+  width: 20%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.dialog-record .dialog-record-content .record-video .loading .loading-image h4 {
+  margin-top: 10%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.dialog-record .dialog-record-content .record-video .loading .loading-bar {
+  height: 50%;
+}
+
+.dialog-record .dialog-record-content .record-video .loading .loading-bar img {
+  width: 60%;
+  height: 40%;
+  margin-left: 20%;
 }
 
 .dialog-record .dialog-record-content .record-actions {
   justify-self: flex-end;
+  padding-left: 1em;
   padding-right: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 97%;
+}
+
+.dialog-record .dialog-record-content .record-actions .timer {
+  visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dialog-record .dialog-record-content .record-actions .timer input {
+  width: 70%;
 }
 
 .dialog-record .dialog-record-content .record-actions .record-buttons {
@@ -147,11 +259,19 @@
   display: flex;
 }
 
-.dialog-record .dialog-record-content .record-actions .record-buttons .capture-button {
-  padding: 0.5em;
+.dialog-record .dialog-record-content .record-actions .recording-buttons {
+  display: none;
 }
 
-.dialog-record .dialog-record-content .record-actions .record-buttons #preview {
+.dialog-record .dialog-record-content .record-actions .upload-buttons {
+  display: none;
+  width: 55%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dialog-record .dialog-record-content .record-actions .cancel-button {
   display: none;
 }
 /*# sourceMappingURL=style-record-gifs.css.map */

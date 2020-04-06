@@ -1,4 +1,4 @@
-const constants = {
+const constrainsUrl = {
   mainGetUrl: "https://api.giphy.com/v1/gifs/search",
   trendGetUrl: "https://api.giphy.com/v1/gifs/trending",
   apiKey: "wfb4bluWYWrK0DTU75QBPfJBHd9aEKk4"
@@ -36,7 +36,7 @@ const resultElementsRequested = {
 
 const TrendFetch = async () => {
   const searchQuery = await fetch(
-    `${constants.trendGetUrl}?api_key=${constants.apiKey}&limit=${12}`,
+    `${constrainsUrl.trendGetUrl}?api_key=${constrainsUrl.apiKey}&limit=${12}`,
     {
       method: "GET"
     }
@@ -47,7 +47,7 @@ const TrendFetch = async () => {
 
 const SearchFetch = async (inputValue, limit) => {
   const searchQuery = await fetch(
-    `${constants.mainGetUrl}?api_key=${constants.apiKey}&q=${inputValue}&limit=${limit}`,
+    `${constrainsUrl.mainGetUrl}?api_key=${constrainsUrl.apiKey}&q=${inputValue}&limit=${limit}`,
     {
       method: "GET"
     }
@@ -269,11 +269,14 @@ const ChangeTheme = (isDay, isRecordPage) => {
   let styleSheet = document.getElementsByTagName("link");
   let logo = document.getElementById("logo");
   let camera = document.getElementById("camera-icon");
+  let record= document.getElementById("recording-icon");
+ 
   if (isDay) {
     styleSheet[0].href = "../styles/style-home-light.css";
     logo.setAttribute("src", "../assets/gifOF_logo.png");
     if (isRecordPage) {
       camera.setAttribute("src", "../assets/camera.svg");
+      record.setAttribute("src", "../assets/recording_dark.svg");
     }
     dropdownElementsRequested.dropdownContent.style.display = "none";
   } else {
@@ -281,6 +284,7 @@ const ChangeTheme = (isDay, isRecordPage) => {
     logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
     if (isRecordPage) {
       camera.setAttribute("src", "../assets/camera_light.svg");
+      record.setAttribute("src", "../assets/recording.svg");
     }
     dropdownElementsRequested.dropdownContent.style.display = "none";
   }

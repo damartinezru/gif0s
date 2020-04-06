@@ -16,7 +16,7 @@
       <div class="general-margin">
         <div>
             <div class="images">
-                <a id="left-arrow" href="../index.html"><img src="../assets/arrow.svg"/></a>
+                <a id="left-arrow" href="../pages/record-gifs.html"><img src="../assets/arrow.svg"/></a>
                 <img id="logo" src="../assets/gifOF_logo.png" />  
             </div>
         </div>
@@ -82,41 +82,70 @@
     <section id="dialog-record" class="dialog-record general-margin">
       <div class="dialog-record-content">
         <div class="record-header record-header-style">
-          <h4>Un Chequeo Antes De Empezar</h4>
+          <h4 id="record-header">Un Chequeo Antes De Empezar</h4>
           <img src="../assets/close.svg" />
         </div>
         <div class="record-video">
-          <video autoplay="true" id="video-element" ></video>
+          <video autoplay="true" id="video-element" class="video" ></video>
           <img id="preview">
+          <div class="loading" id="loading">
+            <div class="loading-image">
+              <img src="../assets/globe_img.png">
+              <h4 class="font-dialog">Estamos subiendo tu guifo</h4>
+            </div>
+            <div class="loading-bar">
+              <img src="https://media1.tenor.com/images/479aaaad6ef464e91b3247550a88e717/tenor.gif?itemid=13877409">
+              <h6 class="font-dialog">Tiempo restante: 38 años algunos minutos</h6>
+            </div>
+          </div>
         </div>
         <div class="record-actions">
-          <!-- <div class="timer">
-            <input>
+          <div class="timer" id="timer">
+            <input id="timer-input" class="font-dialog">
           </div>
-          <div class="progress-bar">
-            <button></button>
-            <input>
-          </div> -->
-          <div class="record-buttons">
-            <button id="camera" class="font button-theme button-one capture-button ">
+          <div class="record-buttons" id="record-buttons">
+            <button class="font button-theme button-one icon-button">
               <img id="camera-icon" />
             </button> 
-            <button id="capture" class="font button-theme button-one capture-button" onclick="StartRecording()">Capturar</button>
+            <button class="font button-theme button-one capture-button" onclick="StartRecording()">Capturar</button>
           </div>
-          <!-- <div class="upload-buttons">
-            <button id="camera" class="font button-theme button-one capture-button ">
-              <img id="camera-icon" />
+          <div class="recording-buttons" id="recording-buttons">
+            <button class="font recording-style icon-button" onclick="StopRecording()">
+              <img id="recording-icon" />
             </button> 
-            <button id="capture" class="font button-theme button-one capture-button" onclick="StartRecording()">Capturar</button>
+            <button class="font recording-style capture-button " onclick="StopRecording()">Listo</button>
           </div>
-          <div class="cancel-button">
-            <button></button>
-          </div> -->
+          <div class="upload-buttons" id="upload-buttons">
+            <button class="font button-theme button-one upload-button" onclick="ChangeElements(true,false)">Repetir Captura</button>
+            <button class="font button-theme button-one upload-button" onclick="UploadGif()">Subir Guifo</button>
+          </div>
+          <div class="cancel-button" id="cancel-button">
+            <button>Cancelar</button>
+          </div>
+        </div>
+      </div>
+      <div class="dialog-result" id="dialog-result">
+        <div class="record-header record-header-style">
+          <h4 id="result-header">Guifo Subido Con &Eacute;xito</h4>
+          <img src="../assets/close.svg" />
+        </div>
+        <div class="result-video">
+          <img id="result-preview">
+        </div>
+        <div class="result-actions">
+          <h3>Guifo creado con &eacute;xito</h3>
+          <button id="copyUrl">Copiar Enlace Guifo</button>
+          <button onclick="DownloadGif()">Descargar Guifo</button>
+        </div>
+        <div class="result-close">
+          <button>Listo</button>
         </div>
       </div>
     </section>
+    <script src="../lib/easytimer.min.js"></script>
     <script src="../js/logic.js"></script>
     <script src="../js/record.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.6/RecordRTC.js"></script>
+
   </body>
 </html>
