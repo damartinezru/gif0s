@@ -36,7 +36,7 @@ const resultElementsRequested = {
 
 const TrendFetch = async () => {
   const searchQuery = await fetch(
-    `${constrainsUrl.trendGetUrl}?api_key=${constrainsUrl.apiKey}&limit=${12}`,
+    `${constrainsUrl.trendGetUrl}?api_key=${constrainsUrl.apiKey}&limit=${25}`,
     {
       method: "GET"
     }
@@ -257,35 +257,26 @@ const OpenThemeDropdown = () => {
 
 const SelectTheme = isDay => {
   if (isDay) {
-    ChangeTheme(true);
     sessionStorage.setItem("theme", "light");
+    ChangeTheme(isDay);
   } else {
-    ChangeTheme();
     sessionStorage.setItem("theme", "dark");
+    ChangeTheme();
   }
+  
 };
 
-const ChangeTheme = (isDay, isRecordPage) => {
+const ChangeTheme = isDay => {
   let styleSheet = document.getElementsByTagName("link");
   let logo = document.getElementById("logo");
-  let camera = document.getElementById("camera-icon");
-  let record= document.getElementById("recording-icon");
- 
+
   if (isDay) {
     styleSheet[0].href = "../styles/style-home-light.css";
     logo.setAttribute("src", "../assets/gifOF_logo.png");
-    if (isRecordPage) {
-      camera.setAttribute("src", "../assets/camera.svg");
-      record.setAttribute("src", "../assets/recording_dark.svg");
-    }
     dropdownElementsRequested.dropdownContent.style.display = "none";
   } else {
     styleSheet[0].href = "../styles/style-home-dark.css";
     logo.setAttribute("src", "../assets/gifOF_logo_dark.png");
-    if (isRecordPage) {
-      camera.setAttribute("src", "../assets/camera_light.svg");
-      record.setAttribute("src", "../assets/recording.svg");
-    }
     dropdownElementsRequested.dropdownContent.style.display = "none";
   }
 };
@@ -301,11 +292,11 @@ const OpenDialogMyGifs = button => {
   window.location = "../pages/record-gifs.html";
 };
 
-const CheckStylesheet = isRecordPage => {
+const CheckStylesheet = () => {
   let theme = sessionStorage.getItem("theme");
   if (theme === "light") {
-    ChangeTheme(true,isRecordPage);
+    ChangeTheme(true);
   } else {
-    ChangeTheme(false,isRecordPage);
+    ChangeTheme(false);
   }
 };

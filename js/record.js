@@ -2,7 +2,29 @@ const constrainsUrls = {
   mainGetUrl: "https://api.giphy.com/v1/gifs",
   uploadUrl: "https://upload.giphy.com/v1/gifs",
   apiKey: "wfb4bluWYWrK0DTU75QBPfJBHd9aEKk4"
-}; 
+};
+let commonElements = {
+  recordHeader: document.getElementById("record-header"),
+  timer: document.getElementById("timer"),
+  firstButtonBlock: document.getElementById("record-buttons"),
+  secondButtonBlock: document.getElementById("recording-buttons"),
+  thirdButtonBlock: document.getElementById("upload-buttons"),
+  fourthButtonBlock: document.getElementById("cancel-button"),
+  loadingBlock: document.getElementById("loading")
+};
+let dialogs = {
+  infoDialog: document.getElementById("dialog"),
+  gifDialog: document.getElementById("dialog-record"),
+  resultDialog: document.getElementById("dialog-result"),
+  gifDialogContent: document.getElementById("dialog-record-content")
+};
+
+let headerText = {
+  firstText: "Un Chequeo Antes De Empezar",
+  secondText: "Capturando Tu Guifo",
+  thirdText: "Vista Previa",
+  fourthText: "Subiendo Guifo"
+};
 
 let timerInstance = new easytimer.Timer();
 const video = document.getElementById("video-element");
@@ -10,7 +32,6 @@ const imagePreview = document.getElementById("preview");
 let camera;
 let record;
 let blob;
-
 const constrains = {
   audio: false,
   video: {
@@ -32,6 +53,7 @@ const recordObject = stream => {
 };
 
 const OpenCamera = callback => {
+  CheckThemeIcons();
   HideOpenContainers();
   navigator.mediaDevices
     .getUserMedia(constrains)
@@ -46,14 +68,11 @@ const OpenCamera = callback => {
 };
 
 const HideOpenContainers = () => {
-  let dialogBlock = document.getElementById("dialog");
-  let dialogRecord = document.getElementById("dialog-record");
-  let myGifSection = document.getElementById("my-section");
   let navButtons = document.getElementById("initial-buttons");
   navButtons.style.display = "none";
-  myGifSection.style.display = "none";
-  dialogBlock.style.display = "none";
-  dialogRecord.style.display = "block";
+  myGifs.myGifSection.style.display = "none";
+  dialogs.infoDialog.style.display = "none";
+  dialogs.gifDialog.style.display = "block";
 };
 
 const StartRecording = () => {
@@ -79,31 +98,27 @@ const StopRecording = () => {
   ChangeElements(false, true);
 };
 
-const ChangeElements = (isRepeat, isReady) => {
-  let header = document.getElementById("record-header");
-  let timer = document.getElementById("timer");
-  let firstButtonBlock = document.getElementById("record-buttons");
-  let secondButtonBlock = document.getElementById("recording-buttons");
-  let thirdButtonBlock = document.getElementById("upload-buttons");
-
-  if (isRepeat) {
-    header.innerText = "Un Chequeo Antes De Empezar";
-    firstButtonBlock.style.display = "flex";
-    thirdButtonBlock.style.display = "none";
-    timer.style.visibility = "hidden";
+const ChangeElements = (captureRepeat, isReady) => {
+  if (captureRepeat) {
+    commonElements.recordHeader.innerText = headerText.firstText;
+    commonElements.firstButtonBlock.style.display = "flex";
+    commonElements.thirdButtonBlock.style.display = "none";
+    commonElements.timer.style.visibility = "hidden";
     imagePreview.removeAttribute("style");
     imagePreview.removeAttribute("src");
     video.removeAttribute("style");
     OpenCamera();
   } else {
-    header.innerText = "Capturando Tu Guifo";
-    firstButtonBlock.style.display = "none";
-    secondButtonBlock.style.display = "flex";
-    timer.style.visibility = "visible";
+    commonElements.recordHeader.innerText = headerText.secondText;
+    commonElements.firstButtonBlock.style.display = "none";
+    commonElements.secondButtonBlock.removeAttribute("style");
+    commonElements.secondButtonBlock.style.display = "flex";
+    commonElements.timer.style.visibility = "visible";
 
     if (isReady) {
-      secondButtonBlock.style.display = "none";
-      thirdButtonBlock.style.display = "flex";
+      commonElements.recordHeader.innerText = headerText.thirdText;
+      commonElements.secondButtonBlock.style.display = "none";
+      commonElements.thirdButtonBlock.style.display = "flex";
     }
   }
 };
@@ -121,7 +136,6 @@ const StartTimer = () => {
 
 const UploadGif = async () => {
   OpenChargeDialog();
-
   data = new FormData();
   data.append("file", blob, "myGifO.gif");
   let responseUpload = await fetch(
@@ -147,15 +161,15 @@ const SaveGifLocalStorageElements = async id => {
   let responseSave = await fetch(
     `${constrainsUrls.mainGetUrl}/${id}?api_key=${constrainsUrl.apiKey}`,
     {
-      method: "GET",
+      method: "GET"
     }
   )
     .then(response => {
       return response.json();
     })
     .then(response => {
-      console.log(response);
       let URI = response.data.images.downsized.url;
+      let myGifos = [];
       document.getElementById("copyUrl").setAttribute("value", URI);
       let StorageElements = localStorage.getItem("myGifos");
       if (StorageElements) {
@@ -167,37 +181,75 @@ const SaveGifLocalStorageElements = async id => {
         myGifos.push(response.data);
         localStorage.setItem("myGifos", JSON.stringify(myGifos));
       }
-      OpenResultDialog();
+      setTimeout(() => {
+        OpenResultDialog();
+      }, 500);
     })
     .catch(e => {
       console.error(e);
     });
-    return responseSave;
+  return responseSave;
+};
+
+const CancelGifSave = () => {
+  window.location = "./record-gifs.html";
 };
 
 const DownloadGif = () => {
-  console.log("Funcionando ");
   invokeSaveAsDialog(blob, "myGifO.gif");
 };
 
 const OpenChargeDialog = () => {
-  let header = document.getElementById("record-header");
-  let loading = document.getElementById("loading");
-  let uploadButtonBlock = document.getElementById("upload-buttons");
-  let cancelButtonBlock = document.getElementById("cancel-button");
-  let timer = document.getElementById("timer");
   imagePreview.style.display = "none";
   video.style.display = "none";
-  loading.style.display = "flex";
-  header.innerText = "Subiendo Guifo";
-  uploadButtonBlock.style.display = "none";
-  cancelButtonBlock.style.display = "flex";
-  timer.style.display = "none";
-}
+  commonElements.loadingBlock.style.display = "flex";
+  commonElements.recordHeader.innerText = headerText.fourthText;
+  commonElements.thirdButtonBlock.style.display = "none";
+  commonElements.secondButtonBlock.style.display = "flex";
+  commonElements.secondButtonBlock.style.visibility = "hidden";
+  commonElements.fourthButtonBlock.style.display = "flex";
+  commonElements.timer.style.display = "none";
+};
 
 const OpenResultDialog = () => {
-  let dialogRecord = document.getElementById("dialog-record-content");
-  let result = document.getElementById("dialog-result");
-  dialogRecord.style.display = "none";
-  result.style.display = "grid";
-}
+  
+    let image = document.getElementById("result-preview");
+    let imageGif = JSON.parse(localStorage.getItem("myGifos"));
+    dialogs.gifDialogContent.style.display = "none";
+    image.setAttribute(
+      "src",
+      imageGif[imageGif.length - 1].images.downsized_large.url
+    );
+    dialogs.resultDialog.style.display = "grid";
+    OpenMyGifos();
+  
+};
+
+const CopyToClipboard = () => {
+  let value = document.getElementById("copyUrl").getAttribute("value");
+  navigator.clipboard
+    .writeText(value)
+    .then(() => {
+      alert("Texto copiado a clipboard");
+    })
+    .catch(e => {
+      console.error(e);
+    });
+};
+
+const Back = () => {
+  window.location = "./record-gifs.html";
+};
+
+const CheckThemeIcons = () => {
+  let camera = document.getElementById("camera-icon");
+  let record = document.getElementById("recording-icon");
+  let session = sessionStorage.getItem("theme");
+  if (session === "light") {
+    camera.setAttribute("src", "../assets/camera.svg");
+    record.setAttribute("src", "../assets/recording_dark.svg");
+  } else {
+    camera.setAttribute("src", "../assets/camera_light.svg");
+    record.setAttribute("src", "../assets/recording.svg");
+  }
+};

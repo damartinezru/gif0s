@@ -145,8 +145,9 @@ header div .initial-buttons .dropdown .dropdown-content button:hover, .search .s
   color: #AC9EB8;
 }
 
-.camera {
-  background-image: url("../assets/camera.svg");
+.record-header-style {
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
 }
 
 .container {

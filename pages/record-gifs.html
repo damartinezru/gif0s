@@ -16,7 +16,7 @@
       <div class="general-margin">
         <div>
             <div class="images">
-                <a id="left-arrow" href="../pages/record-gifs.html"><img src="../assets/arrow.svg"/></a>
+                <a id="left-arrow" href="../pages/my-gifs.html"><img src="../assets/arrow.svg"/></a>
                 <img id="logo" src="../assets/gifOF_logo.png" />  
             </div>
         </div>
@@ -75,12 +75,9 @@
         </div>
       </div>
     </section>
-    <section id="my-section" class="my-section general-margin">
-      <input value="" class="input-box-gifs" type="text" disabled />
-      <div id="my-section-gifs"></div>
-    </section>
+
     <section id="dialog-record" class="dialog-record general-margin">
-      <div class="dialog-record-content">
+      <div class="dialog-record-content" id="dialog-record-content">
         <div class="record-header record-header-style">
           <h4 id="record-header">Un Chequeo Antes De Empezar</h4>
           <img src="../assets/close.svg" />
@@ -91,11 +88,11 @@
           <div class="loading" id="loading">
             <div class="loading-image">
               <img src="../assets/globe_img.png">
-              <h4 class="font-dialog">Estamos subiendo tu guifo</h4>
+              <h4 class="font-dialog">Estamos subiendo tu guifo . . .</h4>
             </div>
             <div class="loading-bar">
               <img src="https://media1.tenor.com/images/479aaaad6ef464e91b3247550a88e717/tenor.gif?itemid=13877409">
-              <h6 class="font-dialog">Tiempo restante: 38 años algunos minutos</h6>
+              <h5 class="font-dialog">Tiempo restante: 38 años algunos minutos</h5>
             </div>
           </div>
         </div>
@@ -120,32 +117,37 @@
             <button class="font button-theme button-one upload-button" onclick="UploadGif()">Subir Guifo</button>
           </div>
           <div class="cancel-button" id="cancel-button">
-            <button>Cancelar</button>
+            <button class="font button-theme button-one capture-button " onclick="CancelGifSave()">Cancelar</button> 
           </div>
         </div>
       </div>
       <div class="dialog-result" id="dialog-result">
-        <div class="record-header record-header-style">
-          <h4 id="result-header">Guifo Subido Con &Eacute;xito</h4>
-          <img src="../assets/close.svg" />
+        <div class="result-header record-header-style">
+          <h4 id="result-header ">Guifo Subido Con &Eacute;xito</h4>
+          <img src="../assets/close.svg" /> 
         </div>
         <div class="result-video">
           <img id="result-preview">
         </div>
         <div class="result-actions">
-          <h3>Guifo creado con &eacute;xito</h3>
-          <button id="copyUrl">Copiar Enlace Guifo</button>
-          <button onclick="DownloadGif()">Descargar Guifo</button>
+          <h4>Guifo creado con &eacute;xito</h4>
+          <button id="copyUrl" class="font-dialog" onclick="CopyToClipboard()">Copiar Enlace Guifo</button>
+          <button onclick="DownloadGif()" class="font-dialog">Descargar Guifo</button>
         </div>
         <div class="result-close">
-          <button>Listo</button>
+          <button class="font button-one" onclick="Back()">Listo</button>
         </div>
       </div>
     </section>
+    <section id="my-section" class="my-section general-margin">
+      <input value="" class="input-box-gifs" type="text" disabled />
+      <div id="my-section-gifs" class="my-section-gifs"></div>
+    </section> 
     <script src="../lib/easytimer.min.js"></script>
     <script src="../js/logic.js"></script>
     <script src="../js/record.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.6/RecordRTC.js"></script>
+    <script src="../js/myGifs.js"></script>
 
   </body>
 </html>

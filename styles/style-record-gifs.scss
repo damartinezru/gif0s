@@ -18,19 +18,19 @@
 .icon-button {
   padding: 0 0.5em 0 0.5em;
 }
-.capture-button { 
+.capture-button {
   text-align: center;
-  padding: 0 2.5em 0 2.5em;   
+  padding: 0 2.5em 0 2.5em;
 }
 
 .upload-button {
   text-align: center;
-  padding: 0 2.5em 0 2.5em;   
+  padding: 0 2.5em 0 2.5em;
 }
 
-.recording-style{
+.recording-style {
   background-color: $twelfth-color;
-  color:$fourth-color;
+  color: $fourth-color;
   border: $primary-border-prefix;
   box-shadow: $primary-boxshadow-prefix;
 }
@@ -78,18 +78,71 @@
     width: 100%;
     padding: 0.3em 0em 0.3em 0.5em;
   }
+  .my-section-gifs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: minmax(300px, auto);
+    grid-auto-flow: dense;
+    margin-top: 2%;
+    grid-gap: 1.3%;
+  }
 }
 
 .dialog-record {
   padding: 2% 15% 2% 15%;
   display: none;
-  .dialog-result{
-    display: none; 
+  .dialog-result {
+    display: none;
     @extend %search-box-style;
     height: 20em;
     padding: 0.5%;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 100% 100%;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 15% 50% 25%;
+    .result-header {
+      grid-area: 1/1/1/3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 1.5em;
+      padding: 0% 0.5% 0% 0.3%;
+      h4 {
+        color: $fourth-color;
+        @extend %second-font-prefix;
+        font-size: 14px;
+      }
+    }
+    .result-video {
+      justify-self: center;
+    }
+
+    .result-actions {
+      padding: 10% 10% 0 0;
+      display: flex;
+      flex-flow: column;
+      h4 {
+        color: $primary-color;
+        @extend %font-prefix;
+        @extend %first-font-measure;
+        font-weight: 600;
+      }
+      button {
+        margin-top: 5%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+      }
+    }
+    .result-close {
+      grid-area: 3/2/3/2;
+      justify-self: flex-end;
+      padding-right: 10%;
+      width: 50%;
+      button {
+        width: 90%;
+        margin-left: 10%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+      }
+    }
   }
   .dialog-record-content {
     @extend %search-box-style;
@@ -130,30 +183,44 @@
         margin-right: 0.4%;
         width: 99.5%;
       }
-      .loading{
+      .loading {
         display: none;
         margin-top: 15%;
-        margin-left: 30%;
+        margin-left: 15%;
         margin-bottom: 10%;
+        width: 60%;
         flex-flow: column;
-        .loading-image{
+        .loading-image {
           display: flex;
           flex-flow: column;
+          margin-left: 20%;
           img {
             width: 20%;
             align-self: center;
           }
-          h4{
+          h4 {
             margin-top: 10%;
             align-self: center;
+            font-weight: 600;
+            line-height: 22px;
+            font-size: 16px;
+            text-align: center;
           }
         }
-        .loading-bar{
+        .loading-bar {
           height: 50%;
-          img{
-            width: 60%;
-            height: 40%;
-            margin-left: 20%;
+          margin-left: 10%;
+          img {
+            width: 110%;
+            height: 60%;
+          }
+          h5 {
+            font-size: 12px;
+            color: rgba(17, 0, 56, 0.64);
+            letter-spacing: 0;
+            text-align: center;
+            line-height: 14px;
+            margin-left: 5%;
           }
         }
       }
@@ -172,10 +239,9 @@
           @extend %input-box-style;
           width: 70%;
         }
-      } 
+      }
       .record-buttons {
         display: flex;
-        
       }
       .recording-buttons {
         display: none;
@@ -190,9 +256,6 @@
       .cancel-button {
         display: none;
       }
-
     }
   }
-
-
 }
