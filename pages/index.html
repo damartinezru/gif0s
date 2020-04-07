@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./styles/style-home-light.css" rel="stylesheet" />
+    <link href="../styles/style-home-light.css" rel="stylesheet" />
     <title>Gif0s</title>
   </head>
   <body onload="FirstLoad()">
@@ -15,7 +15,7 @@
       <div class="general-margin">
         <div>
             <div class="images">
-              <a href="../index.html"><img id="logo" src="../assets/gifOF_logo.png" />  </a>
+              <a href="../pages/index.html"><img id="logo" src="../assets/gifOF_logo.png" alt="gifOslogo" />  </a>
             </div>
         </div>
         <div class="initial-buttons">
@@ -26,7 +26,7 @@
             <div class="dropdown-buttons">
               <button class="font button-one button-theme" onclick="OpenThemeDropdown()" > Elegir tema</button>
               <button class="font button-one button-dropdown " onclick="OpenThemeDropdown()" >
-                <img src="../assets/dropdown.svg" />
+                <img src="../assets/dropdown.svg" alt="dropdownIcon" />
               </button>
             </div>
             <div class="dropdown-content " id="dropdown-content">
@@ -39,7 +39,6 @@
             </div>
           </div>
         </div>
-      </div>
     </header>
     <section class="search general-margin">
       <div class="head-search">
@@ -52,7 +51,7 @@
           oninput="InputActive(this)"
         />
         <button id="search-button" onclick="Search()">
-          <img src="./assets/lupa_inactive.svg" /><span>Buscar</span>
+          <img src="../assets/lupa_inactive.svg" alt="searchIcon" /><span>Buscar</span>
         </button>
       </div>
       <div
@@ -80,6 +79,6 @@
       <input value="" class="input-box-gifs" type="text" disabled />
       <div id="result-gifs"></div>
     </section>
-    <script src="./js/logic.js"></script>
+    <script src="../js/logic.js"></script>
   </body>
 </html>

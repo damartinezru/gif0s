@@ -88,7 +88,7 @@ const Search = async (buttonSelected, hasHash) => {
   }
   const response = await SearchFetch(
     searchBoxElementsRequested.searchInput.value,
-    8
+    15
   );
   CreateResultTags(response.data, resultElementsRequested.resultTags);
   CreateGifs(resultElementsRequested.resultGifContainer, response.data, true);

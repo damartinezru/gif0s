@@ -55,16 +55,18 @@ const recordObject = stream => {
 const OpenCamera = callback => {
   CheckThemeIcons();
   HideOpenContainers();
-  navigator.mediaDevices
+  if (callback) {
+    callback(camera);
+  } else {
+    navigator.mediaDevices
     .getUserMedia(constrains)
     .then(stream => {
       camera = stream;
       video.srcObject = camera;
-      if (callback) {
-        callback(camera);
-      }
     })
     .catch(console.error);
+  }
+
 };
 
 const HideOpenContainers = () => {

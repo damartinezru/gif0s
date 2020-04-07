@@ -16,8 +16,8 @@
       <div class="general-margin">
         <div>
             <div class="images">
-                <a id="left-arrow" href="../pages/my-gifs.html"><img src="../assets/arrow.svg"/></a>
-                <img id="logo" src="../assets/gifOF_logo.png" />  
+                <a id="left-arrow" href="../pages/my-gifs.html"><img src="../assets/arrow.svg" alt="arrowBack"/></a>
+                <img id="logo" src="../assets/gifOF_logo.png" alt="gifOsLogo" />  
             </div>
         </div>
         <div id="initial-buttons" class="initial-buttons">
@@ -28,7 +28,7 @@
             <div class="dropdown-buttons">
               <button class="font button-one button-theme" onclick="OpenThemeDropdown()" > Elegir tema</button>
               <button class="font button-one button-dropdown" onclick="OpenThemeDropdown()" >
-                <img src="../assets/dropdown.svg" />
+                <img src="../assets/dropdown.svg" alt="dropdownIcon"/>
               </button> 
             </div>
             <div class="dropdown-content " id="dropdown-content">
@@ -37,15 +37,14 @@
             </div> 
           </div>
             <div class="my-gifs-button">
-              <a class="font " href="my-gifs.html"><span class="letter-underline">M</span>is Guifos</a>
+              <a class="font" href="my-gifs.html"><span class="letter-underline">M</span>is Guifos</a>
             </div>
           </div>
         </div>
-      </div>
     </header>
-    <section id="dialog"class="dialog general-margin">
+    <section id="dialog" class="dialog general-margin">
       <div class="dialog-content">
-        <img src="../assets/window img.png" />
+        <img src="../assets/window_img.png" alt="windowIcon"/>
         <h4 class="font-dialog">Aqu&iacute; podr&aacute;s crear tus propios guifos</h4>
         <div class="paragraph font-dialog">
           <p>
@@ -80,18 +79,18 @@
       <div class="dialog-record-content" id="dialog-record-content">
         <div class="record-header record-header-style">
           <h4 id="record-header">Un Chequeo Antes De Empezar</h4>
-          <img src="../assets/close.svg" />
+          <img src="../assets/close.svg" alt="closeIcon" />
         </div>
         <div class="record-video">
-          <video autoplay="true" id="video-element" class="video" ></video>
-          <img id="preview">
+          <video id="video-element" class="video" ></video>
+          <img id="preview" src="" alt="previewImage">
           <div class="loading" id="loading">
             <div class="loading-image">
-              <img src="../assets/globe_img.png">
+              <img src="../assets/globe_img.png" alt="globeIcon">
               <h4 class="font-dialog">Estamos subiendo tu guifo . . .</h4>
             </div>
             <div class="loading-bar">
-              <img src="https://media1.tenor.com/images/479aaaad6ef464e91b3247550a88e717/tenor.gif?itemid=13877409">
+              <img src="https://media1.tenor.com/images/479aaaad6ef464e91b3247550a88e717/tenor.gif?itemid=13877409" alt="loadingBar">
               <h5 class="font-dialog">Tiempo restante: 38 años algunos minutos</h5>
             </div>
           </div>
@@ -102,13 +101,13 @@
           </div>
           <div class="record-buttons" id="record-buttons">
             <button class="font button-theme button-one icon-button">
-              <img id="camera-icon" />
+              <img id="camera-icon" src="" alt="cameraIcon" />
             </button> 
             <button class="font button-theme button-one capture-button" onclick="StartRecording()">Capturar</button>
           </div>
           <div class="recording-buttons" id="recording-buttons">
             <button class="font recording-style icon-button" onclick="StopRecording()">
-              <img id="recording-icon" />
+              <img id="recording-icon" src="" alt="recordIcon" />
             </button> 
             <button class="font recording-style capture-button " onclick="StopRecording()">Listo</button>
           </div>
@@ -123,11 +122,11 @@
       </div>
       <div class="dialog-result" id="dialog-result">
         <div class="result-header record-header-style">
-          <h4 id="result-header ">Guifo Subido Con &Eacute;xito</h4>
-          <img src="../assets/close.svg" /> 
+          <h4 id="result-header">Guifo Subido Con &Eacute;xito</h4>
+          <img src="../assets/close.svg" alt="closeIcon" /> 
         </div>
         <div class="result-video">
-          <img id="result-preview">
+          <img id="result-preview" src="" alt="resultPreview">
         </div>
         <div class="result-actions">
           <h4>Guifo creado con &eacute;xito</h4>

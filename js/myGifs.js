@@ -6,7 +6,6 @@ let myGifs = {
 
 const OpenMyGifos = () => {
   let local = localStorage.getItem("myGifos");
-  console.log(myGifs);
   if (local) {
     CreateMyGifs(myGifs.myGifBlock, JSON.parse(local));
     if (myGifs.myGifSection) {
